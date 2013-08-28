@@ -1,0 +1,9 @@
+---
+:orm: activerecord
+:test: none
+:mock: none
+:script: jquery
+:renderer: erb
+:stylesheet: none
+:namespace: Kuma
+:migration_format: number

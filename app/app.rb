@@ -24,5 +24,9 @@ module Kuma
             config.debug       = PADRINO_ENV == "production" ? false : true
         end
     end
+
+    use OmniAuth::Builder do
+        provider :identity, fields: [:nickname, :email], model: User, on_failed_registration: -> {|env| }
+    end
   end
 end

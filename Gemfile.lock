@@ -137,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 3.2)
+  bcrypt-ruby
   coffee-script
   database_cleaner
   erubis (~> 2.7.0)

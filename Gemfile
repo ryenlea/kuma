@@ -1,5 +1,8 @@
 source 'http://ruby.taobao.org'
 gem 'thin'
+#
+#gem 'chinese_pinyin'
+
 # Optional JSON codec (faster performance)
 gem 'oj'
 
@@ -25,6 +28,7 @@ gem 'padrino', '0.11.3'
 
 #auth
 gem 'omniauth-identity'
+gem 'bcrypt-ruby', :require => "bcrypt"
 
 gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
 

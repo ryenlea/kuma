@@ -2,7 +2,7 @@ source 'http://ruby.taobao.org'
 gem 'thin'
 #
 #gem 'chinese_pinyin'
-
+gem 'sinatra-flash'
 # Optional JSON codec (faster performance)
 gem 'oj'
 
@@ -21,6 +21,8 @@ gem "second_level_cache", :git => "git://github.com/csdn-dev/second_level_cache.
 gem 'sprockets'
 gem 'sprockets-helpers', :git => 'git@github.com:omamori/sprockets-helpers.git'
 
+# log system
+gem "sentry-raven" #, :git => "https://github.com/getsentry/raven-ruby.git"
 # Test requirements
 
 # Padrino Stable Gem

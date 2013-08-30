@@ -23,6 +23,8 @@ module Kuma
 
             config.debug       = PADRINO_ENV == "production" ? false : true
         end
+
+        
     end
 
     use OmniAuth::Builder do
@@ -32,6 +34,37 @@ module Kuma
             resp.redirect("/sign_up")
             resp.finish
         }
+    end
+
+    configure :production do
+      enable :caching
+
+      #log system
+      Raven.configure do |config|
+         config.dsn = APP_CONFIG['sentry_dsn']
+      end
+
+      use Raven::Rack
+    end
+
+    error ActiveRecord::RecordNotFound do
+        halt 404
+    end
+
+    error 401 do
+        render 'error/401'
+    end
+      
+    error 403 do
+        render 'error/403'
+    end
+      
+    error 404 do
+        render 'error/404', :layout => 'application'
+    end
+
+    error 500 do
+        render 'error/500'
     end
   end
 end

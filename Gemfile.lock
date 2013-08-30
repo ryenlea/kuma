@@ -41,6 +41,8 @@ GEM
     execjs (2.0.1)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     hashie (2.0.5)
     hike (1.2.3)
     http_router (0.11.0)
@@ -54,6 +56,7 @@ GEM
     mime-types (1.24)
     minitest (2.6.2)
     multi_json (1.7.9)
+    multipart-post (1.2.0)
     mysql2 (0.3.13)
     oj (2.1.4)
     omniauth (1.1.4)
@@ -105,10 +108,16 @@ GEM
       rack (>= 1.0)
     rake (10.1.0)
     sass (3.2.10)
+    sentry-raven (0.6.0)
+      faraday (>= 0.7.6)
+      hashie (>= 1.1.0)
+      uuidtools
     sinatra (1.4.3)
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -130,6 +139,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     url_mount (0.2.1)
       rack
+    uuidtools (2.1.4)
     will_paginate (3.0.4)
 
 PLATFORMS
@@ -153,6 +163,8 @@ DEPENDENCIES
   rake
   sass
   second_level_cache!
+  sentry-raven
+  sinatra-flash
   sprockets
   sprockets-helpers!
   thin

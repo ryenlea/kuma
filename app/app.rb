@@ -26,7 +26,12 @@ module Kuma
     end
 
     use OmniAuth::Builder do
-        provider :identity, fields: [:nickname, :email], model: User, on_failed_registration: -> {|env| }
+        provider :identity, fields: [:nickname, :email], model: User, on_failed_registration: lambda {|env|
+            env['rack.session'][:identity] = env['omniauth.identity']
+            resp = Rack::Response.new("", 302)
+            resp.redirect("/sign_up")
+            resp.finish
+        }
     end
   end
 end

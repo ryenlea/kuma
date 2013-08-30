@@ -3,7 +3,7 @@ class InitTables < ActiveRecord::Migration
   	create_table :users, :force => true do |t|
   		t.string :nickname, :limit => 16 , :null => false
   		t.string :email, :limit => 16, :null => false
-  		t.string :encrypted_password, :limit => 128 ,:null => false
+  		t.string :password_digest, :limit => 128 ,:null => false
   		t.string :phone
   		t.string :reset_password_token
   		t.datetime :reset_password_send_at
@@ -69,6 +69,13 @@ class InitTables < ActiveRecord::Migration
   		t.datetime :created_at
   		t.datetime :updated_at
   	end
+
+  create_table :authentication, :force => true do |t|
+    t.string :provider
+    t.string :uid
+    t.integer :user_id
+    t.timestamp
+  end
 
   end
 

@@ -21,7 +21,7 @@ ActiveSupport.use_standard_json_time_format = true
 # if you're including raw JSON in an HTML page.
 ActiveSupport.escape_html_entities_in_json = false
 
-ActiveRecord::Base.default_timezone = 'Beijing'
+ActiveRecord::Base.default_timezone = :local
 ActiveRecord::Base.time_zone_aware_attributes = false
 
 # Now we can establish connection with our db.

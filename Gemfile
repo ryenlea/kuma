@@ -27,8 +27,9 @@ gem 'sprockets-helpers', :git => 'git@github.com:omamori/sprockets-helpers.git'
 gem 'padrino', '0.11.3'
 
 #auth
+gem 'omniauth'
 gem 'omniauth-identity'
-gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
 

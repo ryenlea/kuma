@@ -14,7 +14,7 @@ gem 'erubis', '~> 2.7.0'
 gem 'activerecord', '~> 3.2', :require => 'active_record'
 gem 'mysql2'
 
-#cache
+# cache
 gem "second_level_cache", :git => "git://github.com/csdn-dev/second_level_cache.git"
 
 # pipeline
@@ -28,12 +28,15 @@ gem "sentry-raven" #, :git => "https://github.com/getsentry/raven-ruby.git"
 # Padrino Stable Gem
 gem 'padrino', '0.11.3'
 
-#auth
-gem 'omniauth'
-gem 'omniauth-identity'
-gem 'bcrypt-ruby', '~> 3.0.0'
+# encrypt
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
+# paging
 gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
+
+# photos
+gem 'carrierwave', :require => ['carrierwave', 'carrierwave/orm/activerecord']
+gem 'mini_magick'
 
 group :development, :test do
     gem 'coffee-script'

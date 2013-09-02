@@ -1,13 +1,17 @@
-<form action='/auth/identity/callback' method='post'>
+<% form_for @user, '/login', :method => :post do |form|%>
   <p>
   	email:
-  	<input type="text" name="email"></input>
+  	<%= form.text_field :email %>
   </p>
   <p>
   	password:
-  	<input type="password" name="password"></input>
+  	<%= form.password_field :password %>
+  </p>
+  <p class="remember_me" >
+    <%= check_box_tag :remember_me, :checked => true %>
+    <%= label_tag :remember_me, :caption => "两周内自动登录" %>
   </p>
   <p>
-  	<input type="submit"></input>
+  	<%= form.submit 'submit' %>
   </p>
-</form>
+<% end %>

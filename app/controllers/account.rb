@@ -2,27 +2,38 @@ Kuma::App.controllers :account, :map => '' do
   layout :account
 
   get :sign_up do
-  	@identity = session[:identity]
-  	#binding.pry if @identity 
-    render 'account/sign_up'
+    @user = User.new
+  	render 'account/sign_up'
+  end
+
+  post :sign_up do
+    @user = User.new(params[:account])
+    @user.current_sign_in_ip = request.ip
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = "sign up succ!"
+      redirect '/admin'
+    else
+      render 'account/sign_up'
+    end
   end
 
   get :login do
     render 'account/login'
   end
 
-  post :login, :map => '/auth/identity/callback' do
+  post :login do
   	user = User.from_auth(env['omniauth.auth'])
   	session[:user_id] = user.id
   	flash[:notice] = "Welcome #{user.nickname}"
+    redirect "/admin"
   end
 
-  get :auth_failure, :map => '/auth/failure' do
-  	flash[:notice] = params[:messages]
-  	redirect '/'
-  end
 
   delete :logout do
+    session["user_id"] = nil;
+    flash[:notice] = 'logout succ!'
+    redirect '/'
   end
 
 end

@@ -1,22 +1,22 @@
-<%= @identity && @identity.errors.messages %>
-<form action='/auth/identity/register' method='post'>
+<% form_for @user, '/sign_up', :method => :post do |form|%>
+  <%= f.error_messages %>
   <p>
-  	nickname:
-  	<input type="text" name="nickname"></input>
+    nickname:
+    <%= form.text_field :nickname %>
   </p>
   <p>
-  	email:
-  	<input type="text" name="email"></input>
+    email:
+    <%= form.text_field :email %>
   </p>
   <p>
-  	password:
-  	<input type="password" name="password"></input>
+    password:
+    <%= form.password_field :password %>
   </p>
   <p>
-  	password_confirm:
-  	<input type="password" name="password_confirm"></input>
+    password_confirm:
+    <%= form.password_field :password_confirmation %>
   </p>
   <p>
-  	<input type="submit"></input>
+    <%= form.submit 'submit' %>
   </p>
-</form>
+<% end %>

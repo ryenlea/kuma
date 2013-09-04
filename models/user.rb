@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
 
     #Auth
     def self.authenticate(email, password)
-        user = first(conditions: {email: email, password_digest: encrypted_password(password)}) if email.present? && password.present?
+        #binding.pry
+        user = first(conditions: {email: email, password_digest: ::Kuma::Util.encrypted_password(password)}) if email.present? && password.present?
         user
     end
 
@@ -60,13 +61,12 @@ class User < ActiveRecord::Base
         user_id != 0 && user = find(user_id) && user.password_digest == password_digest ? user : nil 
     end
 
+    
     private
     def encrypt_password
-        self.password_digest = encrypted_password(password)
+        self.password_digest = ::Kuma::Util.encrypted_password(password)
     end
 
-    def encrypted_password(password)
-        ::BCrypt::Password.create(password)
-    end
+    
 
 end

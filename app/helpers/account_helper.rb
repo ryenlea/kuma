@@ -25,4 +25,7 @@ Kuma::App.helpers do
     		#binding.pry
     		params[:user]
   	end
+
+  	#
+  	
 end

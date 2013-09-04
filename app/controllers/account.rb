@@ -23,12 +23,14 @@ Kuma::App.controllers :account, :map => '' do
   end
 
   post :login do
-    if @user = User.authenticate(params[:user], params[:password])
+    if @user = User.authenticate(params[:user][:email], params[:user][:password])
       session[:user_id] = @user.id
-  	    flash[:notice] = "Welcome #{user.nickname}"
+  	  flash[:notice] = "Welcome #{user.nickname}"
       redirect "/admin"
     else
-      redirect 'account/login'
+      @user = params[:user]
+      binding.pry
+      render 'account/login'
     end
   end
 

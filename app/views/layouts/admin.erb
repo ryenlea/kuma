@@ -1,4 +1,15 @@
-this is admin layout page
-<br/>
-content:
-<%= yield %>
+<!doctype html>
+<html>
+	<head>
+		<%= javascript_tag 'admin' %>
+	</head>
+	<body>
+		<h1>hello <%= @current_user.nickname %>, <%= link_to "logout", '/logout', method: :delete , confirm: 'u wanna logout?' %></h1>
+		<br/>
+		this is admin layout page
+		<br/>
+		content:
+		<br/>
+		<%= yield %>
+	</body>
+</html>

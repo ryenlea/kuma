@@ -1,6 +1,9 @@
 Kuma::App.controllers 'admin' do
+  layout :admin
+
   get :index , map: '' do
-    render 'admin/home'
+  	current_user
+  	render 'admin/home'
   end
 
   get :settings do

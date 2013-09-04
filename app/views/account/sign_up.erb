@@ -1,5 +1,5 @@
 <% form_for @user, '/sign_up', :method => :post do |form|%>
-  <%= f.error_messages %>
+  <%= form.error_messages %>
   <p>
     nickname:
     <%= form.text_field :nickname %>

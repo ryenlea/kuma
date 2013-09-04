@@ -4,7 +4,7 @@ require 'base64'
 class User < ActiveRecord::Base
     has_many :activities
     has_many :authentications
-    acts_as_cached
+    #acts_as_cached
 
     attr_accessor :password, :password_confirmation
 
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     validates_format_of       :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i 
 
     #Callback
-    before_save :encrypt_password, :if => :password_required?
+    before_save :encrypt_password
 
     #Auth
     def self.authenticate(email, password)

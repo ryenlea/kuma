@@ -27,6 +27,12 @@ module Kuma
         
     end
 
+    before /admin*/ do
+        unless user_login?
+            redirect "/login"
+        end
+    end
+
     configure :production do
       enable :caching
 

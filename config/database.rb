@@ -1,4 +1,4 @@
-e# Setup our logger
+# Setup our logger
 ActiveRecord::Base.logger = logger
 
 # Raise exception on mass assignment protection for Active Record models.

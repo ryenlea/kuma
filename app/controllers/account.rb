@@ -1,14 +1,13 @@
 Kuma::App.controllers :account, :map => '' do
   layout :account
-
+  
   get :sign_up do
     @user = User.new
-  	render 'account/sign_up'
+  	  render 'account/sign_up'
   end
 
   post :sign_up do
-    @user = User.new(params[:account])
-    @user.current_sign_in_ip = request.ip
+    @user = User.new(sign_up_params)
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "sign up succ!"
@@ -19,14 +18,18 @@ Kuma::App.controllers :account, :map => '' do
   end
 
   get :login do
+    @user = User.new
     render 'account/login'
   end
 
   post :login do
-  	user = User.from_auth(env['omniauth.auth'])
-  	session[:user_id] = user.id
-  	flash[:notice] = "Welcome #{user.nickname}"
-    redirect "/admin"
+    if @user = User.authenticate(params[:user], params[:password])
+      session[:user_id] = @user.id
+  	    flash[:notice] = "Welcome #{user.nickname}"
+      redirect "/admin"
+    else
+      redirect 'account/login'
+    end
   end
 
 

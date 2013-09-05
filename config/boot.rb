@@ -49,4 +49,7 @@ end
 
 APP_CONFIG = YAML.load_file("#{PADRINO_ROOT}/config/app_config.yml")[PADRINO_ENV]
 
+WillPaginate.per_page = 20
+
+
 Padrino.load!

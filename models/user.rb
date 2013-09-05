@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
     #Auth
     def self.authenticate(email, password)
         #binding.pry
-        user = first(conditions: {email: email, password_digest: ::Kuma::Util.encrypted_password(password)}) if email.present? && password.present?
-        user
+        user = first(conditions: {email: email}) if email.present? && password.present?
+        user && user.password_match?(password) ? user : nil
     end
 
     #Role
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
         cipher = OpenSSL::Cipher::AES.new(256, :CBC)
         cipher.encrypt
         cipher.key = APP_CONFIG['session_secret']
-        base64.encode64(cipher.update("#{id} #{password_digest}") + cipher.final)
+        Base64.encode64(cipher.update("#{id} #{password_digest}") + cipher.final)
     end
 
     def self.decrypt_cookie_value(encrypted_value)
@@ -61,12 +61,13 @@ class User < ActiveRecord::Base
         user_id != 0 && user = find(user_id) && user.password_digest == password_digest ? user : nil 
     end
 
+    #
+    def password_match?(user_input_password)
+        ::BCrypt::Password.new(password_digest) == user_input_password
+    end
     
     private
     def encrypt_password
-        self.password_digest = ::Kuma::Util.encrypted_password(password)
+        self.password_digest = ::BCrypt::Password.create(password)
     end
-
-    
-
 end

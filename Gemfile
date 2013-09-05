@@ -1,16 +1,19 @@
 source 'http://ruby.taobao.org'
+#server
 gem 'thin'
 #
 #gem 'chinese_pinyin'
-gem 'sinatra-flash'
 # Optional JSON codec (faster performance)
 gem 'oj'
 
 # Project requirements
 gem 'rake'
 
-# Component requirements
+# view template
 gem 'erubis', '~> 2.7.0'
+gem 'slim'
+
+#db
 gem 'activerecord', '~> 3.2', :require => 'active_record'
 gem 'mysql2'
 
@@ -25,8 +28,9 @@ gem 'sprockets-helpers', :git => 'git@github.com:omamori/sprockets-helpers.git'
 gem "sentry-raven" #, :git => "https://github.com/getsentry/raven-ruby.git"
 # Test requirements
 
-# Padrino Stable Gem
-gem 'padrino', '0.11.3'
+# Padrino
+# not use 0.11.3 , has csrf bug
+gem 'padrino',  :git => 'https://github.com/padrino/padrino-framework.git', :ref => '1bf047cf274d215075162e64f8261375d6e74802'
 
 # encrypt
 gem 'bcrypt-ruby', :require => 'bcrypt'
@@ -37,6 +41,8 @@ gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/
 # photos
 gem 'carrierwave', :require => ['carrierwave', 'carrierwave/orm/activerecord']
 gem 'mini_magick'
+
+gem 'sinatra-flash'
 
 group :development, :test do
     gem 'coffee-script'

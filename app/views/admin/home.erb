@@ -1,5 +1,8 @@
-<%= flash[:notice] %>
 
 
 <%= @current_user.nickname %>
 protect_page
+
+<ul>
+	<li><%= link_to 'activities', url(:activities, :index) %></li>
+</ul>

@@ -1,0 +1,20 @@
+this is activity list page <%= link_to 'add activity' ,'/admin/activities/new' %>
+<br/>
+<table>
+	<caption>activities total: <%= @activities_count %> </caption>
+	<tr>
+		<td>title</td>
+		<td>product_count</td>
+		<td>status</td>
+		<td>oper</td>
+	</tr>
+	<% @activities.each do |activity| %>
+	<tr>
+		<td><%= link_to activity.name, url(:activities, :edit) %></td>
+		<td><%= activity.name %></td>
+		<td><%= activity.status %></td>
+		<td><%= link_to 'preview', url(:buy, :index, id: activity.id) %> <%= link_to 'edit', url(:activities, :edit, id: activity.id) %><%= link_to 'delete', url(:activity, :delete), method: :delete, confirm: 'are u wanna del this activity?' %></td>
+	</tr>
+	<% end %>
+	<%= (will_paginate @activities, :previous_label => '前一页', :next_label => '后一页').to_s.html_safe %>
+</table>

@@ -1,6 +1,10 @@
 Kuma::App.controllers :account, :map => '' do
   layout :account
   
+  before :sign_up, :login do
+    redirect "/admin" if user_login?
+  end
+
   get :sign_up do
     @user = User.new
   	  render 'account/sign_up'
@@ -23,17 +27,16 @@ Kuma::App.controllers :account, :map => '' do
   end
 
   post :login do
-    if @user = User.authenticate(params[:user][:email], params[:user][:password])
-      session[:user_id] = @user.id
-  	  flash[:notice] = "Welcome #{user.nickname}"
+    @user = User.new(params[:user])
+    if login_user = User.authenticate(@user.email, @user.password)
+      session[:user_id] = login_user.id
+      response.set_cookie('user', {:value => login_user.encrypt_cookie_value, :path => "/", :expires => 2.weeks.since, :httponly => true}) if params[:remember_me]
+  	    flash[:notice] = "Welcome #{@user.nickname}"
       redirect "/admin"
     else
-      @user = params[:user]
-      binding.pry
       render 'account/login'
     end
   end
-
 
   delete :logout do
     session["user_id"] = nil;

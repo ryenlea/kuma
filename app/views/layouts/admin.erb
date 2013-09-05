@@ -1,15 +1,20 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 	<head>
-		<%= javascript_tag 'admin' %>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.05, minimum-scale=1.0, maximum-scale=2.0">
+		<%== csrf_meta_tags %>
+		<%== stylesheet_tag 'admin' %>
+		
 	</head>
 	<body>
 		<h1>hello <%= @current_user.nickname %>, <%= link_to "logout", '/logout', method: :delete , confirm: 'u wanna logout?' %></h1>
 		<br/>
 		this is admin layout page
 		<br/>
-		content:
-		<br/>
+		content:<%= flash[:notice] %>
+		<hr/>
 		<%= yield %>
 	</body>
+	<%== javascript_tag 'admin' %>
 </html>

@@ -13,7 +13,7 @@ class InitTables < ActiveRecord::Migration
   		t.string :current_sign_in_ip
   		t.string :last_sign_in_ip
   		t.integer :photo_id
-  		t.integer :role
+  		t.integer :role, default: 0
   		t.datetime :created_at
   		t.datetime :updated_at
   	end

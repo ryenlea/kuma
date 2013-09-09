@@ -18,9 +18,6 @@ class User < ActiveRecord::Base
     validates_uniqueness_of   :email, :case_sensitive => false
     validates_format_of       :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i 
 
-    #Callback
-    before_save :encrypt_password
-
     #Auth
     def self.authenticate(email, password)
         #binding.pry
@@ -36,7 +33,21 @@ class User < ActiveRecord::Base
     def saler?
         self.role == 1
     end
-    
+
+    def role_description
+        admin? ? "guanliyuan" : saler? ? "saler":"tuanyuan"
+    end    
+
+    #action
+    def save_when_create
+        self.password_digest = ::BCrypt::Password.create(password)
+        save
+    end
+
+    def reset_password
+        self.password_digest = ::BCrypt::Password.create(password)
+        save 
+    end
     #Cookie
     def encrypt_cookie_value
         cipher = OpenSSL::Cipher::AES.new(256, :CBC)

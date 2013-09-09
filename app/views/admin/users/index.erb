@@ -1,0 +1,29 @@
+this is user list page 
+<br/>
+<table border = "1">
+    <caption>users total: </caption>
+    <tr>
+        <td>id</td>
+        <td>nickname</td>
+        <td>email</td>
+        <td>role</td>
+        <td>auth</td>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+        <td><%= user.id %></td>
+        <td><%= user.nickname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role_description %></td>
+        <td>
+            <%= link_to 'reset password', "/admin/users/#{user.id}/reset_password", method: :put, confirm: "are u sure to reset password to 000000?" %> | 
+            <% if user.saler? %> 
+            <%= link_to 'convert to tuanyuan', "/admin/users/#{user.id}/change_role/0",method: :put, confirm: "are u sure to change role to tuanyuan?" %>
+            <% else %>
+            <%= link_to 'convert to saler', "/admin/users/#{user.id}/change_role/1" ,method: :put, confirm: "are u sure to change role to saler?"%>
+            <% end %> 
+        </td>
+    </tr>
+    <% end %>
+    <%= (will_paginate @users, :previous_label => '前一页', :next_label => '后一页').to_s.html_safe %>
+</table>

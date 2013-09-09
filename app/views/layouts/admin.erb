@@ -7,6 +7,8 @@
 		<%== stylesheet_tag 'admin' %>
 		
 	</head>
+	<%= flash[:notice] %>
+	<%= flash[:error] %>
 	<body>
 		<h1>hello <%= @current_user.nickname %>, <%= link_to "logout", '/logout', method: :delete , confirm: 'u wanna logout?' %></h1>
 		<br/>

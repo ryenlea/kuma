@@ -1,7 +1,7 @@
-Kuma::App.controllers :buy do
+Kuma::App.controllers :buy, map: "/buy" do
   
-  get :index, :with => :id do
-  	render 'buy/index'
+  get :show,  map: ':id' do
+  	render 'buy/show'
   end
 
 end

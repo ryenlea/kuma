@@ -11,6 +11,8 @@
 		<h1>hello <%= @current_user.nickname %>, <%= link_to "logout", '/logout', method: :delete , confirm: 'u wanna logout?' %></h1>
 		<br/>
 		this is admin layout page
+		<%= link_to 'activity', '/admin/activities'%>
+		|<%= link_to 'product', '/admin/products'%>
 		<br/>
 		content:<%= flash[:notice] %>
 		<hr/>

@@ -1,16 +1,16 @@
-this is activity list page <%= link_to 'add activity' ,'/admin/activities/new' %>
+Products <%= link_to 'add product' ,'/admin/products/new' %>
 <br/>
 <table border = "1">
-	<caption>activities total: </caption>
+	<caption>products total: </caption>
 	<tr>
 		<td>title</td>
 		<td>product_count</td>
 		<td>status</td>
 		<td>oper</td>
 	</tr>
-	<% @activities.each do |activity| %>
+	<% @products.each do |product| %>
 	<tr>
-		<td><%= link_to activity.name, "/admin/activities/#{activity.id}/edit" %></td>
+		<td><%= link_to product.name, "/admin/products/#{activity.id}/edit" %></td>
 		<td><%= activity.name %></td>
 		<td><%= activity.status %></td>
 		<td>

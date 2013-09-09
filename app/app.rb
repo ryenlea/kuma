@@ -6,6 +6,7 @@ module Kuma
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
+    register WillPaginate::Sinatra
     helpers Sprockets::Helpers
 
     enable :sessions

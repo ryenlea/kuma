@@ -1,9 +1,13 @@
 Kuma::App.controllers 'admin/users' do
-  
-  get :index do
-    "admin index"
+  before do
+  	halt 403 unless user_admin?
   end
 
-  post :update, :with => :id, :map => '' do
+  get :index do
+     render "admin/users/index"
+  end
+
+  put ':user_id/role' do
+  	redirect '/admin/users'
   end
 end

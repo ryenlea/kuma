@@ -7,5 +7,6 @@ Kuma::App.controllers 'admin' do
   end
 
   get :settings do
+  	render 'admin/settings/profile'
   end
 end

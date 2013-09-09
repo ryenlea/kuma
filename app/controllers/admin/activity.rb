@@ -1,4 +1,4 @@
-Kuma::App.controllers :activities, :map => 'admin/activities' do
+Kuma::App.controllers :activities, map: '/admin/activities' do
 	layout :admin
 	
 	before do
@@ -6,8 +6,8 @@ Kuma::App.controllers :activities, :map => 'admin/activities' do
 	end
     
     get :index do
-        @activities = Activity.all
-        @activities_number = 0
+        @activities = Activity.where("1=1").page(params[:page])
+        #@activities_count = 0
         render "admin/activities/index"
     end
 
@@ -17,17 +17,31 @@ Kuma::App.controllers :activities, :map => 'admin/activities' do
     end
 
     post :create , map: '' do
-
+        @activity = current_user.activities.build(params[:activity])
+        if @activity.save
+            redirect "/admin/activities"
+        else
+            render url(:activities, :new)
+        end
     end
 
-    get :edit, :map => ':activity_id/edit' do
-        @activity = Activity.find(params[:activity_id])
+    get '/:activity_id/edit' do
+        @activity = current_user.activities.find(params[:activity_id])
         render "admin/activities/edit"
     end
 
-    put :update, :map => ':activity_id' do
+    put '/:activity_id' do
+        params[:user_id] = current_user.id
+        @activity = Activity.select_activity(params)
+        if @activity.update_attributes(params[:activity])
+            flash[:notice] = 'update ok'
+            redirect '/admin/activities'
+        else
+            render 'admin/activities/edit'
+        end
     end
 
-    delete :delete, :map => ':activity_id' do
+    delete '/:activity_id' do
+
     end
 end

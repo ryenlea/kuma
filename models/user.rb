@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
 
     def reset_password
         self.password_digest = ::BCrypt::Password.create(password)
-        save 
+        update_column(:password_digest, self.password_digest) 
     end
     #Cookie
     def encrypt_cookie_value

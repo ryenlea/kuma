@@ -23,12 +23,11 @@ Kuma::App.controllers 'admin/users' do
   end
 
 
-  put ':user_id/change_role/:role_id' do
-    @user = User.new
-    @user.id = params[:user_id].to_i
+  put ':user_id/change_role/:user_role' do
+    user = User.find(params[:user_id].to_i)
     ROLE = Hash.new(0)
     ROLE["1"] = 1
-    if @user.update_column(:role, ROLE[params[:role_id]])
+    if user.update_column(:role, ROLE[params[:user_role]])
         flash[:notice] = "changerole succ!"
     else
         flash[:error] = "change role err!"

@@ -12,5 +12,5 @@ db/*.db
 config/database.yml
 config/app_config.yml
 public/assets/*
-
+public/uploads/*
 

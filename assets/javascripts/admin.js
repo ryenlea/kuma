@@ -5,3 +5,5 @@
 //= require upload/jquery.fileupload
 //= require upload/jquery.iframe-transport
 //= require upload/jquery.xdr-transport
+
+$('#fileupload').fileupload();

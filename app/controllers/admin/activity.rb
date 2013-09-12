@@ -3,10 +3,11 @@ Kuma::App.controllers :activities, map: '/admin/activities' do
 	
 	before do
         redirect "/login" unless user_login?
+        redirect "/admin" unless user_saler?
 	end
     
     get :index do
-        @activities = Activity.where("1=1").page(params[:page])
+        @activities = current_user.activities.page(params[:page])
         #@activities_count = 0
         render "admin/activities/index"
     end
@@ -42,6 +43,7 @@ Kuma::App.controllers :activities, map: '/admin/activities' do
     end
 
     delete '/:activity_id' do
-
+        current_user.activities.find(params[:activity_id]).destroy
+        redirect "/admin/activities"
     end
 end

@@ -51,5 +51,6 @@ APP_CONFIG = YAML.load_file("#{PADRINO_ROOT}/config/app_config.yml")[PADRINO_ENV
 
 WillPaginate.per_page = 20
 
-
+Padrino::Logger::Config[:development][:stream] = :to_file
+#Padrino::Logger::Config[:development][:log_level] = :warn 
 Padrino.load!

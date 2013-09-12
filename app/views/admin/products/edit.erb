@@ -1,0 +1,4 @@
+<% form_for @product , "/admin/products/#{@product.id}", method: :put do |form|%>
+<%= form.error_messages %>
+<%= partial 'admin/products/form', :object => form %>
+<% end %>

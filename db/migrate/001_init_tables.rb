@@ -2,7 +2,7 @@ class InitTables < ActiveRecord::Migration
   def self.up
   	create_table :users, :force => true do |t|
   		t.string :nickname, :limit => 16 , :null => false
-  		t.string :email, :limit => 16, :null => false
+  		t.string :email, :limit => 30, :null => false
   		t.string :password_digest, :limit => 128 ,:null => false
   		t.string :phone
   		t.string :reset_password_token

@@ -4,6 +4,7 @@ require 'base64'
 class User < ActiveRecord::Base
     has_many :activities
     has_many :authentications
+    has_many :products
     #acts_as_cached
 
     attr_accessor :password, :password_confirmation

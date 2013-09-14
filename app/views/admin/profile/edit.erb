@@ -1,0 +1,27 @@
+<%= YAML::dump(@user)%>
+<% form_for @user , '/admin/profile', method: :put do |form|%>
+    <%= form.error_messages %>
+  <p>
+    nickname:
+    <%= h!(@user.nickname) %>
+  </p>
+  <p>
+    email:
+    <%= h!(@user.email) %>
+  </p>
+  <p>
+    avatar_url:
+    <%= image_tag @user.avatar.url %>
+  </p>
+  <p>
+    phone:
+    <%= form.text_field :phone %>
+  </p>
+  <p>
+    avatar:
+    <%= form.file_field :avatar %>
+  </p>
+  <p>
+    <%= form.submit 'submit' %>
+  </p>
+<% end %>

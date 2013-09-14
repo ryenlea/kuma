@@ -6,18 +6,19 @@ class User < ActiveRecord::Base
     has_many :authentications
     has_many :products
     #acts_as_cached
+    mount_uploader :avatar, AvatarUploader
 
-    attr_accessor :password, :password_confirmation
+    attr_accessor :password, :password_confirmation, :new_password
 
     validates_presence_of     :email                           
     validates_presence_of     :nickname                        
-    validates_presence_of     :password                        
-    validates_length_of       :password, :within => 4..40     
+    validates_presence_of     :password                       
+    validates_length_of       :password, within: 4..40     
     validates_confirmation_of :password                        
     validates_presence_of     :password_confirmation         
-    validates_length_of       :email, :within => 5..100  
-    validates_uniqueness_of   :email, :case_sensitive => false
-    validates_format_of       :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i 
+    validates_length_of       :email, within: 5..100  
+    validates_uniqueness_of   :email, case_sensitive: false
+    validates_format_of       :email, with: /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i 
 
     #Auth
     def self.authenticate(email, password)
@@ -40,6 +41,10 @@ class User < ActiveRecord::Base
     end    
 
     #action
+    def update_profile_without_avatar
+        
+    end
+
     def save_when_create
         self.password_digest = ::BCrypt::Password.create(password)
         save
@@ -76,6 +81,10 @@ class User < ActiveRecord::Base
     #
     def password_match?(user_input_password)
         ::BCrypt::Password.new(password_digest) == user_input_password
+    end
+
+    def has_avatar?
+        self.read_attribute(:avatar).present?
     end
     
     private

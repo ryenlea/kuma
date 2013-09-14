@@ -6,7 +6,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process :convert => 'png' 
   
   def filename 
-      "logo.#{model.logo.file.extension}" if original_filename
+      "logo.#{model.avatar.file.extension}" if original_filename
   end 
   
   def store_dir

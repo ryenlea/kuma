@@ -38,15 +38,6 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at"
   end
 
-  create_table "photos", :force => true do |t|
-    t.integer  "category",   :null => false
-    t.string   "name"
-    t.string   "format"
-    t.string   "path"
-    t.string   "thumb_path"
-    t.datetime "created_at"
-  end
-
   create_table "product_skus", :force => true do |t|
     t.integer  "product_id", :null => false
     t.string   "color"
@@ -66,15 +57,15 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "product_link"
     t.integer  "user_id",        :null => false
     t.integer  "activitiy_id"
-    t.string   "photo_ids"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "nickname",               :limit => 16,  :null => false
-    t.string   "email",                  :limit => 16,  :null => false
-    t.string   "password_digest",        :limit => 128, :null => false
+    t.string   "nickname",               :limit => 16,                 :null => false
+    t.string   "email",                  :limit => 30,                 :null => false
+    t.string   "password_digest",        :limit => 128,                :null => false
     t.string   "phone"
     t.string   "reset_password_token"
     t.datetime "reset_password_send_at"
@@ -83,8 +74,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "current_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "photo_id"
-    t.integer  "role"
+    t.string   "avatar"
+    t.integer  "role",                                  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

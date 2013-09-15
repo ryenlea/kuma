@@ -1,24 +1,26 @@
-Products <%= link_to 'add product' ,'/admin/products/new' %>
-<br/>
-<table border = "1">
-	<caption>products total: </caption>
-	<tr>
-		<td>title</td>
-		<td>product_count</td>
-		<td>status</td>
-		<td>oper</td>
-	</tr>
+<a class="btn btn-kuma btn-large" href="/admin/products/new">add product</a>
+
+<table class="table table-activity">
+	<thead>
+        <tr>
+          <th>product名称</th>
+          <th>income price</th>
+          <th>sale_price</th>
+          <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
 	<% @products.each do |product| %>
 	<tr>
-		<td><%= link_to product.name, "/admin/products/#{product.id}/edit" %></td>
-		<td><%= product.name %></td>
-		<td><%= product.name %></td>
-		<td>
-			<%= link_to 'preview', "/buy/#{product.id}" %> | 
-			<%= link_to 'edit', "/admin/products/#{product.id}/edit" %> | 
-			<%= link_to 'delete', "/admin/products/#{product.id}", method: :delete, confirm: 'are u wanna del this product?' %>
-		</td>
-	</tr>
+      <td><%= link_to product.name, "/admin/products/#{product.id}/edit" %></td>
+	  <td><%= product.purchase_price %></td>
+	  <td><%= product.sell_price %></td>
+      <td>
+		<%= link_to '', "/admin/products/#{product.id}/edit", class: 'btn-edit',title:"编辑" %>
+		<%= link_to '', "/admin/products/#{product.id}", method: :delete, confirm: 'are u wanna del this product?', class: 'btn-del', title: "删除" %>
+	  </td>
+    </tr>
 	<% end %>
+	</tbody>
 	<%= (will_paginate @products, :previous_label => '前一页', :next_label => '后一页').to_s.html_safe %>
 </table>

@@ -2,7 +2,7 @@ Kuma::App.controllers :account, :map => '' do
   #layout :account
   
   before :sign_up, :login do
-    redirect "/admin" if user_login?
+    login_redirect if user_login?
   end
 
   get :sign_up do
@@ -15,7 +15,7 @@ Kuma::App.controllers :account, :map => '' do
     if @user.save_when_create
       session[:user_id] = @user.id
       flash[:notice] = "sign up succ!"
-      redirect '/admin'
+      login_redirect
     else
       render 'account/sign_up'
     end
@@ -32,7 +32,7 @@ Kuma::App.controllers :account, :map => '' do
       session[:user_id] = login_user.id
       response.set_cookie('user', {:value => login_user.encrypt_cookie_value, :path => "/", :expires => 2.weeks.since, :httponly => true}) if params[:remember_me]
   	  flash[:notice] = "Welcome #{@user.nickname}"
-      redirect "/admin"
+      login_redirect
     else
       render 'account/login'
     end

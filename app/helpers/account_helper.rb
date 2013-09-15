@@ -20,6 +20,17 @@ Kuma::App.helpers do
 		current_user && current_user.saler? ? true : false
 	end
 
+    #
+    def login_redirect
+        if user_admin?
+            redirect "/admin/users"
+        elsif user_saler?
+            redirect "/admin/activities"
+        else
+            redirect "/admin"
+        end
+    end
+    #
 	def prepare_session_params
     	params[:user]['current_sign_in_ip'] = request.ip
     	#binding.pry

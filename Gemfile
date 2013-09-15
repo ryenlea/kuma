@@ -45,8 +45,8 @@ gem 'mini_magick'
 gem 'sinatra-flash'
 
 #cache
-gem 'dalli', :require => 'active_support/cache/dalli_store'
-gem 'kgio'
+#gem 'dalli', :require => 'active_support/cache/dalli_store'
+#gem 'kgio'
 
 group :development, :test do
     gem 'coffee-script'

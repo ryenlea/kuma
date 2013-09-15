@@ -55,7 +55,6 @@ class InitTables < ActiveRecord::Migration
   		t.string :color
   		t.string :size
   		t.integer :number
-  		t.integer :user_id, :null => false
   		t.datetime :created_at
   		t.datetime :updated_at
   	end

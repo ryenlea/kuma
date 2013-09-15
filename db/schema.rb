@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(:version => 2) do
 
   create_table "activities", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "user_id",    :null => false
+    t.string   "name",                          :null => false
+    t.integer  "user_id",                       :null => false
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "products_count", :default => 0
   end
 
   create_table "authentication", :force => true do |t|
@@ -56,7 +57,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "taobao_link"
     t.string   "product_link"
     t.integer  "user_id",        :null => false
-    t.integer  "activitiy_id"
+    t.integer  "activity_id"
     t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"

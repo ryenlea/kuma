@@ -1,28 +1,28 @@
 <fieldset>
 	<div class="control-group">
-      <label class="control-label" for="">name</label>
+      <label class="control-label" for="">*活动名称</label>
       <div class="controls">
-        <%= form.text_field :name ,class: "input-xlarge"%>
+        <%= form.text_field :name ,class: "input-xlarge", maxlength: 50%>
       </div>
     </div>
 
 	<div class="control-group">
-      <label class="control-label" for="">start_at</label>
+      <label class="control-label" for="">*开始时间</label>
       <div class="controls">
-        <%= form.text_field :started_at ,class: "input-xlarge"%>
+        <%= form.text_field :started_at ,value: date_formatter(@activity.started_at) ,class: "input-xlarge datepicker", readonly:true%>
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="">ended_at</label>
+      <label class="control-label" for="">*结束时间</label>
       <div class="controls">
-        <%= form.text_field :ended_at ,class: "input-xlarge"%>
+        <%= form.text_field :ended_at ,value: date_formatter(@activity.ended_at) ,class: "input-xlarge datepicker", readonly:true%>
       </div>
     </div>
 
     <div class="control-group">
       <div class="controls">
-        <button class="btn btn-kuma btn-large" type="submit">立即发布</button>
+        <button class="btn btn-kuma btn-large" type="submit">提交</button>
       </div>
     </div>
 </table>

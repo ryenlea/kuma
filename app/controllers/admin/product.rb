@@ -2,39 +2,57 @@ Kuma::App.controllers :products, map: '/admin/products' do
 	layout :admin
 
     before do
-        redirect "/login" unless user_login?
-        redirect "/admin" unless user_saler?
+      redirect "/login" unless user_login?
+      login_redirect unless user_saler?
     end
 
     get :index do
-      @activites = current_user.activities.all
       @products = current_user.products.page(params[:page])
       render 'admin/products/index'
     end
 
     get :new do
+      @activities = current_user.activities.all
       @product = Product.new
-    	  render 'admin/products/new'
+      @product.product_skus.build
+    	render 'admin/products/new'
     end
 
     post :create , map: '' do
       @product = current_user.products.build(params[:product])
-      
+      @product.product_skus.each do |sku|
+        sku['user_id'] = current_user.id
+      end
       if @product.save
         redirect "/admin/products"
       else
+        @activities = current_user.activities.all
         render 'admin/products/new'
       end
     end
 
     get ':product_id/edit' do
-       @product = current_user.products.find(params[:product_id])
+      @product = current_user.products.find(params[:product_id])
+      @activities = current_user.activities.all
   	  render 'admin/products/edit'
     end
 
     put ':product_id' do
+      params[:user_id] = current_user.id
+      @product = current_user.products.find(params[:product_id])
+      @product.product_skus.each do |sku|
+        sku['user_id'] = current_user.id
+      end
+      if @product.update_attributes(params[:product])
+        redirect "/admin/products"
+      else
+        @activities = current_user.activities.all
+        render 'admin/products/edit'
+      end
     end
 
     delete ':product_id' do
+      current_user.products.find(params[:product_id]).destroy
+      redirect "/admin/products"
     end
 end

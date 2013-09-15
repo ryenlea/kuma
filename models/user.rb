@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
     end
 
     def role_description
-        admin? ? "guanliyuan" : saler? ? "saler":"tuanyuan"
+        admin? ? "管理员" : saler? ? "团长":"团员"
     end    
 
     #action

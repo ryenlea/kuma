@@ -1,27 +1,52 @@
-<%= YAML::dump(@user)%>
-<% form_for @user , '/admin/profile', method: :put do |form|%>
-    <%= form.error_messages %>
-  <p>
-    nickname:
-    <%= h!(@user.nickname) %>
-  </p>
-  <p>
-    email:
-    <%= h!(@user.email) %>
-  </p>
-  <p>
-    avatar_url:
-    <%= image_tag @user.avatar.url %>
-  </p>
-  <p>
-    phone:
-    <%= form.text_field :phone %>
-  </p>
-  <p>
-    avatar:
-    <%= form.file_field :avatar %>
-  </p>
-  <p>
-    <%= form.submit 'submit' %>
-  </p>
+<h4 class="sTitle">Setting</h4>
+
+
+<% form_for @user , '/admin/profile', method: :put, class: "form-horizontal" do |form|%>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="/admin/profile">Profile</a></li>
+  <li><a href="/admin/profile/update_password">Update Password</a></li>
+</ul>
+
+  <%if form.error_messages.present? %>
+    <div class="alert alert-error"> <%= form.error_messages %> </div>
+  <% end %>
+  
+  <fieldset>
+    <h4 class="pTitle">update profile</h4>
+    <div class="control-group">
+      <label class="control-label" for="">nickname</label>
+      <div class="controls">
+        <%= h!(@user.nickname) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">email</label>
+      <div class="controls">
+        <%= h!(@user.email) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for=""></label>
+      <div class="controls">
+        <%= image_tag @user.avatar.url %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">pic</label>
+      <div class="controls">
+        <%= form.file_field :avatar, class: 'input-xlarge' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">phone</label>
+      <div class="controls">
+        <%= form.text_field :phone, class:"input-xlarge" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn btn-kuma btn-large" type="submit">立即发布</button>
+      </div>
+    </div>
+  </fieldset>
 <% end %>

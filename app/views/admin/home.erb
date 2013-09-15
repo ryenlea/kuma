@@ -7,3 +7,281 @@ protect_page
 	<li><%= link_to 'activities', url(:activities, :index) %></li>
 </ul>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>酷妈团长</title>
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="topBar" class="clearfix"> <a id="logo" href="#"><img src="img/main_logo.png" alt=" " /></a>
+  <form id="searchBox" class="navbar-search pull-left">
+    <input type="text" class="search-query" placeholder="Search">
+  </form>
+</div>
+<div id="mainContent" class="clearfix"> 
+  <!-- 左侧栏 -->
+  <div id="leftNav">
+    <div id="userBox" class="clearfix">
+      <div class="face"><img src="img/face.png" alt=" " /></div>
+      <div class="info">
+        <h4>小甜甜</h4>
+        <a href="#" class="setting">设置</a><a href="#" class="logout">退出</a> </div>
+    </div>
+    <a href="#" id="addProBtn">添加商品</a>
+    <ul id="menuList">
+      <li><a href="#" class="active">我的活动</a></li>
+      <li><a href="#">我的商品</a></li>
+      <li><a href="#">我的买家</a></li>
+    </ul>
+    
+    
+    <ul id="activityList">
+    <li class="current"><span></span>当前活动</li>
+    <li class="currentItem"><a href="#">[活动]2013秋季童装大出血赶紧行动</a></li>
+    <li class="history"><span></span>历史活动</li>
+    <li class="historyItem"><a href="#"><font>[活动]</font>2013呵呵呵呵呵呵呵秋季童装大出血赶紧行动</a></li>
+    <li class="historyItem"><a href="#"><font>[活动]</font>2013呵呵呵呵呵呵呵秋季童装大出血赶紧行动</a></li>
+    <li class="historyItem"><a href="#"><font>[活动]</font>2013呵呵呵呵呵呵呵秋季童装大出血赶紧行动</a></li>
+    </ul>
+  </div>
+  <!-- 左侧栏结束 --> 
+  <!-- 右侧栏 -->
+  <div id="rightBox"> 
+    <!-- 添加商品 -->
+    <form class="form-horizontal">
+      <fieldset>
+        <h4 class="pTitle">添加商品</h4>
+        <div class="control-group">
+          <label class="control-label" for="">所属活动</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-xlarge">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">商品名称</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-xlarge">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">商品图片</label>
+          <div class="controls">
+            <input class="input-file" id="fileInput" type="file">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">进货价格</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-small">
+            &nbsp;&nbsp;元 </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">出售价格</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-small">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">型号</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-small">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">数量</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-small">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">淘宝链接</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-xlarge">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">其他外部链接</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-xlarge">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="">商品图片</label>
+          <div class="controls">
+            <input type="text" placeholder="" class="input-xlarge">
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button class="btn btn-kuma btn-large" type="submit">立即发布</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <!-- 添加商品结束 --> 
+    <!-- 活动列表 -->
+    <table class="table table-activity">
+      <thead>
+        <tr>
+          <th>活动名称</th>
+          <th>商品数量</th>
+          <th>当前状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>疯抢了，基诺浦秋款学步鞋，全部70元了，数量有限，预购从速！ ...</td>
+          <td>22</td>
+          <td>活动中</td>
+          <td><a class="btn-show" title="查看" href="#"></a><a class="btn-edit" title="编辑" href="#"></a><a class="btn-del" title="删除" href="#"></a></td>
+        </tr>
+        <tr>
+          <td>疯抢了，基诺浦秋款学步鞋，全部70元了，数量有限，预购从速！ ...</td>
+          <td>22</td>
+          <td>活动中</td>
+          <td><a class="btn-show" title="查看" href="#"></a><a class="btn-edit" title="编辑" href="#"></a><a class="btn-del" title="删除" href="#"></a></td>
+        </tr>
+        <tr>
+          <td>疯抢了，基诺浦秋款学步鞋，全部70元了，数量有限，预购从速！ ...</td>
+          <td>22</td>
+          <td>活动中</td>
+          <td><a class="btn-show" title="查看" href="#"></a><a class="btn-edit" title="编辑" href="#"></a><a class="btn-del" title="删除" href="#"></a></td>
+        </tr>
+        <tr>
+          <td>疯抢了，基诺浦秋款学步鞋，全部70元了，数量有限，预购从速！ ...</td>
+          <td>22</td>
+          <td>活动中</td>
+          <td><a class="btn-show" title="查看" href="#"></a><a class="btn-edit" title="编辑" href="#"></a><a class="btn-del" title="删除" href="#"></a></td>
+        </tr>
+        <tr>
+          <td>疯抢了，基诺浦秋款学步鞋，全部70元了，数量有限，预购从速！ ...</td>
+          <td>22</td>
+          <td>活动中</td>
+          <td><a class="btn-show" title="查看" href="#"></a><a class="btn-edit" title="编辑" href="#"></a><a class="btn-del" title="删除" href="#"></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- 活动列表结束 --> 
+    <!-- 商品列表 -->
+    <h4 class="sTitle"><font>【酷妈活动】</font>2013秋季童装大促销，赶紧行动~</h4>
+    <div class="productList clearfix"> 
+      <!-- item -->
+      <div class="item"><img src="img/sharePic.png" alt=" " width="230"/>
+        <h5>2013新款冬装欧美大牌超大貉子毛衣</h5>
+        <div class="clearfix"> <span class="price">￥222</span><span class="info">已有<font>123人</font>预定</span></div>
+        <div class="status clearfix"><span class="fl">进行中</span> <a class="btn fr btn-kumaSmall" href="#">预定</a></div>
+      </div>
+      <!-- item over --><!-- item -->
+      <div class="item"><img src="img/sharePic.png" alt=" " width="230"/>
+        <h5>2013新款冬装欧美大牌超大貉子毛衣</h5>
+        <div class="clearfix"> <span class="price">￥222</span><span class="info">已有<font>123人</font>预定</span></div>
+        <div class="status clearfix"><span class="fl">进行中</span> <a class="btn fr btn-kumaSmall" href="#">预定</a></div>
+      </div>
+      <!-- item over --><!-- item -->
+      <div class="item"><img src="img/sharePic.png" alt=" " width="230"/>
+        <h5>2013新款冬装欧美大牌超大貉子毛衣</h5>
+        <div class="clearfix"> <span class="price">￥222</span><span class="info">已有<font>123人</font>预定</span></div>
+        <div class="status clearfix"><span class="fl">进行中</span> <a class="btn fr btn-kumaSmall" href="#">预定</a></div>
+      </div>
+      <!-- item over --><!-- item -->
+      <div class="item"><img src="img/sharePic.png" alt=" " width="230"/>
+        <h5>2013新款冬装欧美大牌超大貉子毛衣</h5>
+        <div class="clearfix"> <span class="price">￥222</span><span class="info">已有<font>123人</font>预定</span></div>
+        <div class="status clearfix"><span class="fl">进行中</span> <a class="btn fr btn-kumaSmall" href="#">预定</a></div>
+      </div>
+      <!-- item over --><!-- item -->
+      <div class="item"><img src="img/sharePic.png" alt=" " width="230"/>
+        <h5>2013新款冬装欧美大牌超大貉子毛衣</h5>
+        <div class="clearfix"> <span class="price">￥222</span><span class="info">已有<font>123人</font>预定</span></div>
+        <div class="status clearfix"><span class="fl">进行中</span> <a class="btn fr btn-kumaSmall" href="#">预定</a></div>
+      </div>
+      <!-- item over --><!-- item -->
+      <div class="item"><img src="img/sharePic.png" alt=" " width="230"/>
+        <h5>2013新款冬装欧美大牌超大貉子毛衣</h5>
+        <div class="clearfix"> <span class="price">￥222</span><span class="info">已有<font>123人</font>预定</span></div>
+        <div class="status clearfix"><span class="fl">进行中</span> <a class="btn fr btn-kumaSmall" href="#">预定</a></div>
+      </div>
+      <!-- item over --> 
+    </div>
+    <!-- 商品结束 --> 
+    
+    <!-- 商品详情 -->
+    <div class="detail">
+      <h4 class="detailTitle">恋诺2013韩版娃娃领海军风条纹连衣裙女七分袖气质秋装秋天连衣裙</h4>
+      <hr />
+      <table class="detailInfo">
+        <tbody>
+          <tr>
+            <td width="250">商品价格：<font>￥69.0</font></td>
+            <td>报名统计：已有<font>32</font>人预定</td>
+          </tr>
+          <tr>
+            <td>预定时间：8月22日~8月24日</td>
+            <td>预计到货：2013年02月24日</td>
+          </tr>
+          <tr>
+            <td>联系电话：13800000000</td>
+            <td>快递费用：100元</td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="taobaoLk" href="#">淘宝链接：http://detail.tmall.com/item.htm?spm=a2106.m5465.1000384.2.ETjI7&id=19644837068&source=dou&scm=1029 </a> <a class="btn btn-kuma btn-large" href="#" type="submit">立即预定</a>
+      <div class="imgBox"><img src="img/bigImg.jpg" alt=" " /></div>
+      <hr />
+      <h5>酷妈统计</h5>
+      <table class="countTable">
+        <thead>
+          <tr>
+            <th class="info" colspan="6">报名统计：已有<font>32</font>人报名</th>
+          </tr>
+          <tr>
+            <th>用户名</th>
+            <th>预定时间</th>
+            <th>联系方式</th>
+            <th>订单名称</th>
+            <th>领取方式</th>
+            <th>是否付款</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>hehehhe</td>
+            <td>2013-08-11 12:11</td>
+            <td>1381111111</td>
+            <td>恋诺2013韩版娃娃领海军风条纹连衣裙女七分袖气</td>
+            <td>圆通快递</td>
+            <td>是</td>
+          </tr>
+          <tr>
+            <td>hehehhe</td>
+            <td>2013-08-11 12:11</td>
+            <td>1381111111</td>
+            <td>恋诺2013韩版娃娃领海军风条纹连衣裙女七分袖气</td>
+            <td>圆通快递</td>
+            <td>是</td>
+          </tr>
+          <tr>
+            <td>hehehhe</td>
+            <td>2013-08-11 12:11</td>
+            <td>1381111111</td>
+            <td>恋诺2013韩版娃娃领海军风条纹连衣裙女七分袖气</td>
+            <td>圆通快递</td>
+            <td>是</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- 商品详情结束 --> 
+  </div>
+  <!-- 右侧栏结束 --> 
+</div>
+</div>
+<script src="js/jquery-1.8.3.min.js"></script> 
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -23,11 +23,22 @@ Kuma::App.controllers :profile, map: '/admin/profile' do
     redirect "/admin/profile"
   end
 
-  get 'reset_password' do
-    render 'admin/profile/reset_password'
+  get 'update_password' do
+    render 'admin/profile/update_password'
   end
 
-  put 'reset_password' do
-    redirect '/admin/profile/reset_password'
+  put 'update_password' do
+    @user = User.find(current_user.id)
+    @user.attributes = {
+      password: params[:password], 
+      password_confirmation: params[:password_confirmation],
+      current_password: params[:current_password]
+    }
+    if @user.update_password
+      flash[:notice] = 'ok'
+    else
+      flash[:error] = 'update password err'
+    end
+    redirect '/admin/profile/update_password'
   end
 end

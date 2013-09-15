@@ -1,15 +1,38 @@
-<% form_for @user, '/login', :method => :post do |form|%>
-<hr/>
-  <%= form.error_messages %>
-  <p>
-  	email:
-  	<%= form.text_field :email %>
-  </p>
-  <p>
-  	password:
-  	<%= form.password_field :password %>
-  </p>
-  <p>
-  	<%= form.submit 'submit' %>
-  </p>
-<% end %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>酷妈团长</title>
+<%== csrf_meta_tags %>
+<%== stylesheet_tag 'admin' %>
+</head>
+
+<body id="loginPage">
+<div class="content">
+  <div class="container">
+    <% form_for @user, '/login', method: :post, class: "form-signin" do |form|%>
+    <%if form.error_messages.present? %>
+    <div class="alert alert-error"> <%= form.error_messages %> </div>
+    <% end %>
+      <fieldset>
+        <div class="control-group">
+          <div class="controls">
+            <%= form.text_field :email,class: "input-xlarge", placeholder: "用户名" %>
+          </div>
+          <div class="controls">
+            <%= form.password_field :password,class: "input-xlarge", placeholder: "密码" %>
+          </div>
+          <div class="controls">
+            <button class="btn btn-kuma" type="submit">登陆</button>
+          </div>
+          <div class="controls"> <a href="javascript:alert('contact admin');" class="fl">忘记密码</a><a href="/sign_up" class="fr">注册账号</a> </div>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+</div>
+<%= partial 'account/footer' %>
+</body>
+<%== javascript_tag 'admin' %>
+</html>

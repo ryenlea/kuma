@@ -1,5 +1,5 @@
 Kuma::App.controllers :account, :map => '' do
-  layout :account
+  #layout :account
   
   before :sign_up, :login do
     redirect "/admin" if user_login?

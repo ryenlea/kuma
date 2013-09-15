@@ -11,12 +11,12 @@ Products <%= link_to 'add product' ,'/admin/products/new' %>
 	<% @products.each do |product| %>
 	<tr>
 		<td><%= link_to product.name, "/admin/products/#{product.id}/edit" %></td>
-		<td><%= activity.name %></td>
-		<td><%= activity.status %></td>
+		<td><%= product.name %></td>
+		<td><%= product.name %></td>
 		<td>
 			<%= link_to 'preview', "/buy/#{product.id}" %> | 
-			<%= link_to 'edit', "/admin/activities/#{product.id}/edit" %> | 
-			<%= link_to 'delete', "/admin/activities/#{product.id}", method: :delete, confirm: 'are u wanna del this product?' %>
+			<%= link_to 'edit', "/admin/products/#{product.id}/edit" %> | 
+			<%= link_to 'delete', "/admin/products/#{product.id}", method: :delete, confirm: 'are u wanna del this product?' %>
 		</td>
 	</tr>
 	<% end %>

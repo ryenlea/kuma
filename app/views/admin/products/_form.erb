@@ -1,17 +1,27 @@
 <table>
 	<tr>
 		<th>activity</th>
-		<td><%= form.text_field :name %></td>
+		<td><%= form.text_field :activity_id %></td>
 	</tr>
 
 	<tr>
 		<th>product_name</th>
 		<td><%= form.text_field :name %></td>
 	</tr>
+	<% if @product.photo %>
+	<tr>
+		<th>photo</th>
+		<td><%= image_tag @product.photo.url(:thumb) %></td>
+	</tr>
+	<% end %>
+	<tr>
+		<th>photo</th>
+		<td><%= form.file_field :photo %></td>
+	</tr>
 
 	<tr>
 		<th>income_price</th>
-		<td><%= form.text_field :pruchase_price %></td>
+		<td><%= form.text_field :purchase_price %></td>
 	</tr>
 
 	<tr>
@@ -26,7 +36,7 @@
 
 	<tr>
 		<th>other_link</th>
-		<td><%= form.text_field :other_link %></td>
+		<td><%= form.text_field :product_link %></td>
 	</tr>
 
 	<tr>

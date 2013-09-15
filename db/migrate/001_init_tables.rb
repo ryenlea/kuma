@@ -44,7 +44,7 @@ class InitTables < ActiveRecord::Migration
   		t.string :taobao_link
   		t.string :product_link
   		t.integer :user_id, :null => false
-  		t.integer :activitiy_id
+  		t.integer :activity_id
   		t.string :photo
   		t.datetime :created_at
   		t.datetime :updated_at

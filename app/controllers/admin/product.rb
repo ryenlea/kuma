@@ -19,6 +19,7 @@ Kuma::App.controllers :products, map: '/admin/products' do
 
     post :create , map: '' do
       @product = current_user.products.build(params[:product])
+      
       if @product.save
         redirect "/admin/products"
       else

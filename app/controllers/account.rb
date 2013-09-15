@@ -1,4 +1,4 @@
-Kuma::App.controllers :account, :map => '' do
+Kuma::App.controllers :account, map: '' do
   #layout :account
   
   before :sign_up, :login do

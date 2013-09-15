@@ -1,24 +1,27 @@
-this is activity list page <%= link_to 'add activity' ,'/admin/activities/new' %>
-<br/>
-<table border = "1">
-	<caption>activities total: </caption>
-	<tr>
-		<td>title</td>
-		<td>product_count</td>
-		<td>status</td>
-		<td>oper</td>
-	</tr>
+<%= link_to 'add activity' ,'/admin/activities/new',class: "btn btn-kuma btn-large" %>
+
+<table class="table table-activity">
+	<thead>
+        <tr>
+          <th>活动名称</th>
+          <th>商品数量</th>
+          <th>当前状态</th>
+          <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
 	<% @activities.each do |activity| %>
 	<tr>
-		<td><%= link_to activity.name, "/admin/activities/#{activity.id}/edit" %></td>
-		<td><%= activity.name %></td>
-		<td><%= activity.status %></td>
-		<td>
-			<%= link_to 'preview', "/buy/#{activity.id}" %> | 
-			<%= link_to 'edit', "/admin/activities/#{activity.id}/edit" %> | 
-			<%= link_to 'delete', "/admin/activities/#{activity.id}", method: :delete, confirm: 'are u wanna del this activity?' %>
-		</td>
-	</tr>
+      <td><%= link_to activity.name, "/admin/activities/#{activity.id}/edit" %></td>
+      <td>22</td>
+      <td>活动中</td>
+      <td>
+		<%= link_to '', "/buy/#{activity.id}" ,class: 'btn-show', title:'查看'%>
+		<%= link_to '', "/admin/activities/#{activity.id}/edit", class: 'btn-edit',title:"编辑" %>
+		<%= link_to '', "/admin/activities/#{activity.id}", method: :delete, confirm: 'are u wanna del this activity?', class: 'btn-del', title: "删除" %>
+	  </td>
+    </tr>
 	<% end %>
+	</tbody>
 	<%= (will_paginate @activities, :previous_label => '前一页', :next_label => '后一页').to_s.html_safe %>
 </table>

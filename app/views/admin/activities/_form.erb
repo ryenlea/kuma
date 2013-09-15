@@ -1,23 +1,29 @@
-<table>
-	<tr>
-		<th>name</th>
-		<td><%= form.text_field :name %></td>
-	</tr>
+<fieldset>
+	<div class="control-group">
+      <label class="control-label" for="">name</label>
+      <div class="controls">
+        <%= form.text_field :name ,class: "input-xlarge"%>
+      </div>
+    </div>
 
-	<tr>
-		<th>start_at</th>
-		<td><%= form.text_field :started_at %></td>
-	</tr>
+	<div class="control-group">
+      <label class="control-label" for="">start_at</label>
+      <div class="controls">
+        <%= form.text_field :started_at ,class: "input-xlarge"%>
+      </div>
+    </div>
 
-	<tr>
-		<th>ended_at</th>
-		<td><%= form.text_field :ended_at %></td>
-	</tr>
+    <div class="control-group">
+      <label class="control-label" for="">ended_at</label>
+      <div class="controls">
+        <%= form.text_field :ended_at ,class: "input-xlarge"%>
+      </div>
+    </div>
 
-	<tr>
-		<th>&nbsp;</th>
-		<td>
-			<%= form.submit 'submit'%>
-		</td>
-	</tr>
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn btn-kuma btn-large" type="submit">立即发布</button>
+      </div>
+    </div>
 </table>
+</fieldset>

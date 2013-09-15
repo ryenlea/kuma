@@ -1,4 +1,5 @@
-<% form_for @activity , url(:activities, :create) do |form|%>
+<h4 class="pTitle">添加activities</h4>
+<% form_for @activity , url(:activities, :create), class: "form-horizontal" do |form|%>
 <%= form.error_messages %>
 <%= partial 'admin/activities/form', :object => form %>
 <% end %>

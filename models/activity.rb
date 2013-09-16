@@ -31,6 +31,6 @@ class Activity < ActiveRecord::Base
   end
   
   def generate_token 
-    self.token = Digest::MD5.hexdigest("#{Randon.rand(9999999)}-#{Time.now}")
+    self.token = Digest::MD5.hexdigest("#{Random.rand(9999999)}-#{Time.now}")
   end
 end

@@ -8,7 +8,7 @@ Kuma::App.controllers :account, map: '' do
 
   get :sign_up do
     @user = User.new
-  	render 'account/sign_up'
+  	render 'account/sign_up', layout: false
   end
 
   post :sign_up do
@@ -18,13 +18,13 @@ Kuma::App.controllers :account, map: '' do
       flash[:notice] = "sign up succ!"
       login_redirect
     else
-      render 'account/sign_up'
+      render 'account/sign_up', layout: false
     end
   end
 
   get :login do
     @user = User.new
-    render 'account/login'
+    render 'account/login', layout: false
   end
 
   post :login do
@@ -35,7 +35,7 @@ Kuma::App.controllers :account, map: '' do
   	  flash[:notice] = "Welcome #{@user.nickname}"
       login_redirect
     else
-      render 'account/login'
+      render 'account/login', layout: false
     end
   end
 

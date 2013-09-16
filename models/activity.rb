@@ -1,3 +1,5 @@
+require 'digest'
+
 class Activity < ActiveRecord::Base
   has_many :products
   belongs_to :user
@@ -6,7 +8,8 @@ class Activity < ActiveRecord::Base
   validates :name, length: {maximum: 50}
   validate :dates_must_be_valid
     
-    
+  before_create :generate_token
+  
   def self.select_activity(params)
     find(params[:activity_id])
   end
@@ -21,7 +24,12 @@ class Activity < ActiveRecord::Base
     end
   end
   
+  private
   def dates_must_be_valid
     errors.add(:started_at, "请填写正确的时间区间") if ended_at <= started_at or ended_at < Time.now
+  end
+  
+  def generate_token 
+    self.token = Digest::MD5.hexdigest("#{Randon.rand(9999999)}-#{Time.now}")
   end
 end

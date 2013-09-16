@@ -1,1 +1,33 @@
-this is buy page
+<div class="detail">
+  <h4 class="detailTitle"><%= @product.name %></h4>
+  <hr />
+  <table class="detailInfo">
+    <tbody>
+      <tr>
+        <td width="250">商品价格：<font><%= @product.sell_price %></font></td>
+        <td>报名统计：已有<font>32</font>人预定</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <a class="taobaoLk" href="#">淘宝链接：<%= @product.taobao_link %> </a> 
+  <a class="btn btn-kuma btn-large" href="javascript" type="submit" data-toggle="modal">立即预定</a>
+  <div class="imgBox"><img src="<%= @product.photo.url %>" alt=" " /></div>
+  
+  <table border=1>
+	  <tr>
+		  <th>颜色</th>
+		  <th>尺寸</th>
+		  <th>剩余数量</th>
+	  </tr>
+	  <% @product.product_skus.each do |sku| %>
+	  <tr>
+		  <td><%= sku.color %></td>
+		  <td><%= sku.size %></td>
+		  <td><%= sku.number %></td>
+	  </tr>
+	  <% end %>
+  </table>
+  <hr />
+  
+</div>

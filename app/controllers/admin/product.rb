@@ -20,9 +20,6 @@ Kuma::App.controllers :products, map: '/admin/products' do
 
     post :create , map: '' do
       @product = current_user.products.build(params[:product])
-      @product.product_skus.each do |sku|
-        sku['user_id'] = current_user.id
-      end
       if @product.save
         redirect "/admin/products"
       else
@@ -40,9 +37,7 @@ Kuma::App.controllers :products, map: '/admin/products' do
     put ':product_id' do
       params[:user_id] = current_user.id
       @product = current_user.products.find(params[:product_id])
-      @product.product_skus.each do |sku|
-        sku['user_id'] = current_user.id
-      end
+      
       if @product.update_attributes(params[:product])
         redirect "/admin/products"
       else

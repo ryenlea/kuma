@@ -16,7 +16,7 @@
       <td><%= activity.products_count %></td>
       <td><%= activity.status %></td>
       <td>
-		<%= link_to '', "/buy/#{activity.id}" ,class: 'btn-show', title:'查看'%>
+		<%= link_to '', "/buy/#{activity.token}" , target: '_blank',class: 'btn-show', title:'查看'%>
 		<%= link_to '', "/admin/activities/#{activity.id}/edit", class: 'btn-edit',title:"编辑" %>
 		<%= link_to '', "/admin/activities/#{activity.id}", method: :delete, confirm: 'are u wanna del this activity?', class: 'btn-del', title: "删除" %>
 	  </td>

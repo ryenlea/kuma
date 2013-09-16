@@ -1,3 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>酷妈团长</title>
+<%== csrf_meta_tags %>
+<%== stylesheet_tag 'admin' %>
+</head>
 
-<%== javascript_tag 'admin' %>
-<%= yield %>
+<body>
+<div id="topBar" class="clearfix"> <a id="logo" href="/"><img src="<%= image_path('main_logo.png') %>" alt="logo" /></a>
+</div>
+<div id="mainContent" class="clearfix"> 
+  <!-- 右侧栏 -->
+  <div id="rightBox">
+  	<%= yield %>
+  </div>
+  <!-- 右侧栏结束 --> 
+</div>
+</div>
+<%== javascript_tag 'admin',charset: "UTF-8" %>
+</body>
+</html>

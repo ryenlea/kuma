@@ -1,4 +1,5 @@
-<% form_for @product , "/admin/products", method: :post do |form|%>
+<h4 class="pTitle">新建产品</h4>
+<% form_for @product , "/admin/products", method: :post, class: "form-horizontal" do |form|%>
 <%= form.error_messages %>
 <%= partial 'admin/products/form', :object => form %>
 <% end %>

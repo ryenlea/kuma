@@ -1,12 +1,13 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  include Sprockets::Helpers
   storage :file
   
   process :resize_to_fit => [80, 80]
   process :convert => 'png' 
   
   def filename 
-      "logo.#{model.logo.file.extension}" if original_filename
+      "logo.#{model.avatar.file.extension}" if original_filename
   end 
   
   def store_dir
@@ -14,7 +15,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-   "/images/default_logo.jpg"
+   image_path('face.png')
   end
 
   def extension_white_list

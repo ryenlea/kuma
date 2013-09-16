@@ -15,7 +15,7 @@ Kuma::App.controllers 'admin/users' do
     @user.password = "000000"
     @user.password_confirmation = "000000"
     if @user.reset_password
-        flash[:notice] = "reset password to '000000' succ!"
+        flash[:notice] =e "reset password to '000000' succ!"
     else
         flash[:error] = "reset password err or ur password already 000000?"
     end
@@ -24,10 +24,10 @@ Kuma::App.controllers 'admin/users' do
 
 
   put ':user_id/change_role/:user_role' do
-    user = User.find(params[:user_id].to_i)
     ROLE = Hash.new(0)
     ROLE["1"] = 1
-    if user.update_column(:role, ROLE[params[:user_role]])
+    user = User.find(params[:user_id])
+    if user.update_attribute("role", ROLE[params[:user_role]])
         flash[:notice] = "changerole succ!"
     else
         flash[:error] = "change role err!"

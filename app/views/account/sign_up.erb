@@ -1,22 +1,64 @@
-<% form_for @user, '/sign_up', :method => :post do |form|%>
-  <%= form.error_messages %>
-  <p>
-    nickname:
-    <%= form.text_field :nickname %>
-  </p>
-  <p>
-    email:
-    <%= form.text_field :email %>
-  </p>
-  <p>
-    password:
-    <%= form.password_field :password %>
-  </p>
-  <p>
-    password_confirm:
-    <%= form.password_field :password_confirmation %>
-  </p>
-  <p>
-    <%= form.submit 'submit' %>
-  </p>
-<% end %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>酷妈团长</title>
+<%== csrf_meta_tags %>
+<%== stylesheet_tag 'admin' %>
+</head>
+
+<body id="regPage">
+<div class="header">
+  <div class="container"> <a href="/"><img id="regLogo" src="<%= image_path 'reg_logo.png' %>" alt="logo" /></a> </div>
+</div>
+</div>
+<div class="content">
+  <div class="container">
+    <% form_for @user, '/sign_up', method: :post, class: "form-horizontal" do |form|%>
+    <%if form.error_messages.present? %>
+    <div class="alert alert-error"> <%= form.error_messages %> </div>
+    <% end %>
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="input01">用户名</label>
+          <div class="controls">
+            <%= form.text_field :nickname, placeholder:"请输入用户名" ,class:"input-xlarge" %>          
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="input01">邮箱</label>
+          <div class="controls">
+            <%= form.text_field :email, placeholder:"请输入邮箱",class: "input-xlarge" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="input01">密码</label>
+          <div class="controls">
+            <%= form.password_field :password, placeholder: "请输入密码", class: "input-xlarge" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="input01">确认密码</label>
+          <div class="controls">
+            <%= form.password_field :password_confirmation, placeholder: "请确认密码",class: "input-xlarge" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <%= form.check_box :terms_of_service, value: 1, uncheck_value: 0, class: "input-xlarge" %>
+            同意<font>“酷妈团长服务条款”</font>和<font>“酷妈团长私权保护和个人信息利用政策”</font> </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button class="btn btn-kuma" type="submit">注册</button>
+            <span class="vb">已经注册了？请<a id="" href="/login" class=""><font>登录</font></a></span> </div>
+        </div>
+      </fieldset>
+    <%end%>
+  </div>
+</div>
+</div>
+<%= partial 'account/footer' %>
+</body>
+<%== javascript_tag 'admin' %>
+</html>

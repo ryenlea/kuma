@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(:version => 2) do
 
   create_table "activities", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "user_id",    :null => false
+    t.string   "name",                          :null => false
+    t.integer  "user_id",                       :null => false
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "products_count", :default => 0
   end
 
   create_table "authentication", :force => true do |t|
@@ -36,15 +37,6 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "buyer_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "photos", :force => true do |t|
-    t.integer  "category",   :null => false
-    t.string   "name"
-    t.string   "format"
-    t.string   "path"
-    t.string   "thumb_path"
-    t.datetime "created_at"
   end
 
   create_table "product_skus", :force => true do |t|
@@ -65,16 +57,16 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "taobao_link"
     t.string   "product_link"
     t.integer  "user_id",        :null => false
-    t.integer  "activitiy_id"
-    t.string   "photo_ids"
+    t.integer  "activity_id"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "nickname",               :limit => 16,  :null => false
-    t.string   "email",                  :limit => 16,  :null => false
-    t.string   "password_digest",        :limit => 128, :null => false
+    t.string   "nickname",               :limit => 16,                 :null => false
+    t.string   "email",                  :limit => 30,                 :null => false
+    t.string   "password_digest",        :limit => 128,                :null => false
     t.string   "phone"
     t.string   "reset_password_token"
     t.datetime "reset_password_send_at"
@@ -83,8 +75,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "current_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "photo_id"
-    t.integer  "role"
+    t.string   "avatar"
+    t.integer  "role",                                  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

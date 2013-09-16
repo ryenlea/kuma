@@ -12,20 +12,20 @@ class InitTables < ActiveRecord::Migration
   		t.datetime :current_sign_in_at
   		t.string :current_sign_in_ip
   		t.string :last_sign_in_ip
-  		t.integer :photo_id
+  		t.string :avatar
   		t.integer :role, default: 0
   		t.datetime :created_at
   		t.datetime :updated_at
   	end
 
-  	create_table :photos, :force => true do |t|
-  		t.integer :category, :null => false
-  		t.string :name
-  		t.string :format
-  		t.string :path
-  		t.string :thumb_path
-  		t.datetime :created_at
-  	end
+  	#create_table :photos, :force => true do |t|
+  	#	t.integer :category, :null => false
+  	#	t.string :name
+  	#	t.string :format
+  	#	t.string :path
+  	#	t.string :thumb_path
+  	#	t.datetime :created_at
+  	#end
 
   	create_table :activities, :force => true do |t|
   		t.string :name, :null => false
@@ -44,8 +44,8 @@ class InitTables < ActiveRecord::Migration
   		t.string :taobao_link
   		t.string :product_link
   		t.integer :user_id, :null => false
-  		t.integer :activitiy_id
-  		t.string :photo_ids
+  		t.integer :activity_id
+  		t.string :photo
   		t.datetime :created_at
   		t.datetime :updated_at
   	end
@@ -55,7 +55,6 @@ class InitTables < ActiveRecord::Migration
   		t.string :color
   		t.string :size
   		t.integer :number
-  		t.integer :user_id, :null => false
   		t.datetime :created_at
   		t.datetime :updated_at
   	end
@@ -81,7 +80,7 @@ class InitTables < ActiveRecord::Migration
 
   def self.down
   	drop_table :users
-  	drop_table :photos
+  	#drop_table :photos
   	drop_table :activities
   	drop_table :products
   	drop_table :product_skus

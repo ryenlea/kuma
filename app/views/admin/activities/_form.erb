@@ -1,23 +1,29 @@
-<table>
-	<tr>
-		<th>name</th>
-		<td><%= form.text_field :name %></td>
-	</tr>
+<fieldset>
+	<div class="control-group">
+      <label class="control-label" for="">*活动名称</label>
+      <div class="controls">
+        <%= form.text_field :name ,class: "input-xlarge", maxlength: 50%>
+      </div>
+    </div>
 
-	<tr>
-		<th>start_at</th>
-		<td><%= form.text_field :started_at %></td>
-	</tr>
+	<div class="control-group">
+      <label class="control-label" for="">*开始时间</label>
+      <div class="controls">
+        <%= form.text_field :started_at ,value: date_formatter(@activity.started_at) ,class: "input-xlarge datepicker", readonly:true%>
+      </div>
+    </div>
 
-	<tr>
-		<th>ended_at</th>
-		<td><%= form.text_field :ended_at %></td>
-	</tr>
+    <div class="control-group">
+      <label class="control-label" for="">*结束时间</label>
+      <div class="controls">
+        <%= form.text_field :ended_at ,value: date_formatter(@activity.ended_at) ,class: "input-xlarge datepicker", readonly:true%>
+      </div>
+    </div>
 
-	<tr>
-		<th>&nbsp;</th>
-		<td>
-			<%= form.submit 'submit'%>
-		</td>
-	</tr>
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn btn-kuma btn-large" type="submit">提交</button>
+      </div>
+    </div>
 </table>
+</fieldset>

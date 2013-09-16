@@ -1,38 +1,83 @@
-<table>
-	<tr>
-		<th>activity</th>
-		<td><%= form.text_field :name %></td>
-	</tr>
+<fieldset>
+	<div class="control-group">
+      <label class="control-label" for="">*所属活动</label>
+      <div class="controls">
+		<%= form.select :activity_id, collection:@activities, fields: [:name,:id],class:"chosen-select" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">*产品名称</label>
+      <div class="controls">
+        <%= form.text_field :name ,class: "input-xlarge"%>
+      </div>
+    </div>
+     <div class="control-group">
+      <label class="control-label" for=""></label>
+      <div class="controls">
+        <%= image_tag @product.photo.url(:thumb) %>
+      </div>
+    </div>
+     <div class="control-group">
+      <label class="control-label" for="">产品图</label>
+      <div class="controls">
+        <%= form.file_field :photo ,class: "input-xlarge"%>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">进货价</label>
+      <div class="controls">
+        <%= form.text_field :purchase_price ,class: "input-xlarge"%>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">出货价</label>
+      <div class="controls">
+        <%= form.text_field :sell_price ,class: "input-xlarge"%>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">*规格</label>
+	  <div id="skus">
+	  <% i = 0 %>
+	  <% form.fields_for :product_skus do |sku| %>
+      	<div class="controls" id="sku<%= i %>">
+        	<%= sku.text_field :color ,class: "input-xlarge", placeholder: '颜色'%>
+			<%= sku.text_field :size ,class: "input-xlarge", placeholder: '尺码'%>
+			<%= sku.text_field :number ,class: "input-xlarge", placeholder: '数量'%>
+			<a href="javascript:del_sku('<%= i %>')">删除</a>
+      	</div>
+	  <% i += 1 %>
+	  <% end %>
+  	  </div>
+      <div class="controls">
+		<a href="javascript:add_sku()">添加规格</a>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">taobao链接</label>
+      <div class="controls">
+        <%= form.text_field :taobao_link ,class: "input-xlarge"%>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="">其他链接</label>
+      <div class="controls">
+        <%= form.text_field :product_link ,class: "input-xlarge"%>
+      </div>
+    </div>
 
-	<tr>
-		<th>product_name</th>
-		<td><%= form.text_field :name %></td>
-	</tr>
-
-	<tr>
-		<th>income_price</th>
-		<td><%= form.text_field :pruchase_price %></td>
-	</tr>
-
-	<tr>
-		<th>sell_price</th>
-		<td><%= form.text_field :sell_price %></td>
-	</tr>
-
-	<tr>
-		<th>taobao_link</th>
-		<td><%= form.text_field :taobao_link %></td>
-	</tr>
-
-	<tr>
-		<th>other_link</th>
-		<td><%= form.text_field :other_link %></td>
-	</tr>
-
-	<tr>
-		<th>&nbsp;</th>
-		<td>
-			<%= form.submit 'submit'%>
-		</td>
-	</tr>
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn btn-kuma btn-large" type="submit">提交</button>
+      </div>
+    </div>
 </table>
+</fieldset>
+<script type="text/template" id="add_sku_template">
+<div class="controls" id="sku{{=sku_id}}">
+  <input class="input-xlarge" placeholder="颜色" value="" id="product_product_skus_attributes_{{=sku_id}}_color" name="product[product_skus_attributes][{{=sku_id}}][color]" type="text">
+  <input class="input-xlarge" placeholder="尺码" value="" id="product_product_skus_attributes_{{=sku_id}}_size" name="product[product_skus_attributes][{{=sku_id}}][size]" type="text">
+  <input class="input-xlarge" placeholder="数量" value="" id="product_product_skus_attributes_{{=sku_id}}_number" name="product[product_skus_attributes][{{=sku_id}}][number]" type="text">
+  <a href="javascript:del_sku('{{=sku_id}}')">删除</a>
+</div>
+</script>

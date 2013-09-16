@@ -22,9 +22,8 @@ gem "second_level_cache", :git => "git://github.com/csdn-dev/second_level_cache.
 
 # pipeline
 gem 'sprockets'
-gem 'sprockets-helpers', :git => 'git@github.com:omamori/sprockets-helpers.git'
+gem 'sprockets-helpers'
 
-# log system
 gem "sentry-raven" #, :git => "https://github.com/getsentry/raven-ruby.git"
 # Test requirements
 
@@ -45,8 +44,8 @@ gem 'mini_magick'
 gem 'sinatra-flash'
 
 #cache
-gem 'dalli', :require => 'active_support/cache/dalli_store'
-gem 'kgio'
+#gem 'dalli', :require => 'active_support/cache/dalli_store'
+#gem 'kgio'
 
 group :development, :test do
     gem 'coffee-script'

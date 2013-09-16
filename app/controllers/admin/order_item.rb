@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.controllers :order_items do
 	parent :activity, :map => 'admin/activities'
 

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.helpers do
 	def date_formatter date
     date ||= Time.now

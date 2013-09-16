@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.controllers :profile, map: '/admin/profile' do
   layout :admin
 

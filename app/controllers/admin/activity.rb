@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.controllers :activities, map: '/admin/activities' do
 	layout :admin
 	

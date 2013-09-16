@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Product < ActiveRecord::Base
 	has_many :product_skus, dependent: :destroy, inverse_of: :product
 	belongs_to :activity, counter_cache: true

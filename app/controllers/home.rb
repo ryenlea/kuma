@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.controllers :home do
   get :index , map: '/' do
   	redirect '/login'

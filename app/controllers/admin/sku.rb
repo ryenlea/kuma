@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.controllers :skus do
     parent :product, :map => '/admin/products'
 

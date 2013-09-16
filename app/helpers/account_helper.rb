@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.helpers do
 	def current_user
 		return @current_user if @current_user

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ProductSku < ActiveRecord::Base
   belongs_to :product
     

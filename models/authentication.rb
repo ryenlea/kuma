@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Authentication < ActiveRecord::Base
 	belongs_to :user
 	validates :provider, :presence => true, :uniqueness => {:scope => :user_id}

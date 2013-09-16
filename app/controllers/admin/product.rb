@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.controllers :products, map: '/admin/products' do
 	layout :admin
 

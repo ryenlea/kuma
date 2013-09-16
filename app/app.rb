@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require File.expand_path('../../config/sprockets', __FILE__)
 
 module Kuma

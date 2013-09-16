@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.controllers :photos do
   
   get :index do

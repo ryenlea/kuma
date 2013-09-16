@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Kuma::App.controllers "/buy" do
   layout :application
   

@@ -1,10 +1,12 @@
 //= require jquery
 //= require jquery-ujs
 //= require jquery-ui
+//= require bootstrap
 //= require underscore
 //= require chosen.jquery
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker.zh-CN
+//= require jquery.ba-resize
 _.templateSettings = {
     interpolate: /\{\{\=(.+?)\}\}/g,
     evaluate: /\{\{(.+?)\}\}/g
@@ -19,16 +21,30 @@ $(document).ready(function(e) {
 	var docWidth = $(document).width();
 	var topBarHeight = $('#topBar').height();
 	var leftNavWidth = $('#leftNav').width();
-	var rightBoxHeight = $('#rightBox').height();
 	
-	$('#leftNav').height(rightBoxHeight + 40);
+	
+	initNav();
+	
 	$('#rightBox').width(docWidth-leftNavWidth);
 	
 	$(window).resize(function() {
 		docWidth = $(document).width();
-		
 		$('#rightBox').width(docWidth-leftNavWidth);
+		console.log('resize');
 	});
+
+	$('#rightBox').resize(function() {
+		initNav();
+	});
+
+	function initNav(){
+		var rightBoxHeight = $('#rightBox').height();
+		if((rightBoxHeight+40) < $(window).height()){
+			$('#leftNav').height($(window).height());
+		}else{
+			$('#leftNav').height(rightBoxHeight + 40);
+		};
+	};
 });
 
 function add_sku(){

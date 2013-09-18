@@ -1,8 +1,9 @@
+<div class="rightConBox">
 <h4 class="sTitle">设置</h4>
 
 
 <% form_for @user , '/admin/profile', method: :put, class: "form-horizontal" do |form|%>
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs adminTabs">
   <li class="active"><a href="/admin/profile">个人信息</a></li>
   <li><a href="/admin/profile/update_password">修改密码</a></li>
 </ul>
@@ -11,34 +12,33 @@
     <div class="alert alert-error"> <%= form.error_messages %> </div>
   <% end %>
   
-  <fieldset>
-    <h4 class="pTitle">修改信息</h4>
+  <fieldset class="adminForm">
     <div class="control-group">
-      <label class="control-label" for="">昵称</label>
+      <label class="control-label">昵称</label>
       <div class="controls">
         <%= h!(@user.nickname) %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="">email</label>
+      <label class="control-label">email</label>
       <div class="controls">
         <%= h!(@user.email) %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for=""></label>
+      <label class="control-label"></label>
       <div class="controls">
         <%= image_tag @user.avatar.url %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="">头像</label>
+      <label class="control-label">头像</label>
       <div class="controls">
         <%= form.file_field :avatar, class: 'input-xlarge' %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="">手机号</label>
+      <label class="control-label">手机号</label>
       <div class="controls">
         <%= form.text_field :phone, class:"input-xlarge" %>
       </div>
@@ -49,4 +49,5 @@
       </div>
     </div>
   </fieldset>
+</div>
 <% end %>

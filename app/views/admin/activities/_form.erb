@@ -1,20 +1,20 @@
 <fieldset>
 	<div class="control-group">
-      <label class="control-label" for="">*活动名称</label>
+      <label class="control-label" for=""><font class="must">*</font>活动名称</label>
       <div class="controls">
         <%= form.text_field :name ,class: "input-xlarge", maxlength: 50%>
       </div>
     </div>
 
 	<div class="control-group">
-      <label class="control-label" for="">*开始时间</label>
+      <label class="control-label" for=""><font class="must">*</font>开始时间</label>
       <div class="controls">
         <%= form.text_field :started_at ,value: date_formatter(@activity.started_at) ,class: "input-xlarge datepicker", readonly:true%>
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="">*结束时间</label>
+      <label class="control-label" for=""><font class="must">*</font>结束时间</label>
       <div class="controls">
         <%= form.text_field :ended_at ,value: date_formatter(@activity.ended_at) ,class: "input-xlarge datepicker", readonly:true%>
       </div>

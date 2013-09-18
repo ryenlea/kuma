@@ -1,12 +1,12 @@
 <fieldset>
 	<div class="control-group">
-      <label class="control-label" for="">*所属活动</label>
+      <label class="control-label" for=""><font class="must">*</font>所属活动</label>
       <div class="controls">
 		<%= form.select :activity_id, collection:@activities, fields: [:name,:id],class:"chosen-select" %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="">*产品名称</label>
+      <label class="control-label" for=""><font class="must">*</font>产品名称</label>
       <div class="controls">
         <%= form.text_field :name ,class: "input-xlarge"%>
       </div>
@@ -41,9 +41,9 @@
 	  <% i = 0 %>
 	  <% form.fields_for :product_skus do |sku| %>
       	<div class="controls" id="sku<%= i %>">
-        	<%= sku.text_field :color ,class: "input-xlarge", placeholder: '颜色'%>
-			<%= sku.text_field :size ,class: "input-xlarge", placeholder: '尺码'%>
-			<%= sku.text_field :number ,class: "input-xlarge", placeholder: '数量'%>
+        	<%= sku.text_field :color ,class: "input-small", placeholder: '颜色'%>
+			<%= sku.text_field :size ,class: "input-small", placeholder: '尺码'%>
+			<%= sku.text_field :number ,class: "input-small", placeholder: '数量'%>
 			<a href="javascript:del_sku('<%= i %>')">删除</a>
       	</div>
 	  <% i += 1 %>
@@ -75,9 +75,9 @@
 </fieldset>
 <script type="text/template" id="add_sku_template">
 <div class="controls" id="sku{{=sku_id}}">
-  <input class="input-xlarge" placeholder="颜色" value="" id="product_product_skus_attributes_{{=sku_id}}_color" name="product[product_skus_attributes][{{=sku_id}}][color]" type="text">
-  <input class="input-xlarge" placeholder="尺码" value="" id="product_product_skus_attributes_{{=sku_id}}_size" name="product[product_skus_attributes][{{=sku_id}}][size]" type="text">
-  <input class="input-xlarge" placeholder="数量" value="" id="product_product_skus_attributes_{{=sku_id}}_number" name="product[product_skus_attributes][{{=sku_id}}][number]" type="text">
+  <input class="input-small" placeholder="颜色" value="" id="product_product_skus_attributes_{{=sku_id}}_color" name="product[product_skus_attributes][{{=sku_id}}][color]" type="text">
+  <input class="input-small" placeholder="尺码" value="" id="product_product_skus_attributes_{{=sku_id}}_size" name="product[product_skus_attributes][{{=sku_id}}][size]" type="text">
+  <input class="input-small" placeholder="数量" value="" id="product_product_skus_attributes_{{=sku_id}}_number" name="product[product_skus_attributes][{{=sku_id}}][number]" type="text">
   <a href="javascript:del_sku('{{=sku_id}}')">删除</a>
 </div>
 </script>

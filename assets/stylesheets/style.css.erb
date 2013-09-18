@@ -15,6 +15,7 @@ body{font-family: "Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei","å¾
 .fl{float:left;}
 .fr{float:right;}
 .mr10{margin-right:10px;}
+.ml35{ margin-left: 35px;}
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {display: inline-block;height: 24px;padding: 4px 6px;margin-bottom: 10px;font-size: 14px;line-height: 24px;color: #555;vertical-align: middle;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px; border-color:#60ab00}
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
 border-color: rgba(96, 171, 0, 0.8);outline: 0;outline: thin dotted \9;-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(96, 171, 0, 0.6);-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(96, 171, 0, 0.6);box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(96, 171, 0, 0.6);
@@ -26,6 +27,15 @@ border-color: rgba(96, 171, 0, 0.8);outline: 0;outline: thin dotted \9;-webkit-b
 .btn-kuma:hover, .btn-kuma:focus, .btn-kuma:active, .btn-kuma.active,.btn-kuma.disabled, .btn-kuma[disabled] {color: #FFF;background-color: #60ab00;}
 .btn-kumaSmall:hover, .btn-kumaSmall:focus, .btn-kumaSmall:active, .btn-kumaSmall.active,.btn-kumaSmall.disabled, .btn-kumaSmall[disabled] {color: #FFF;background-color: #60ab00;}
 hr{border-bottom: 1px solid #CECECE;-moz-box-shadow: 0px 1px 0px #fdfdfd;-webkit-box-shadow: 0px 1px 0px #FDFDFD;box-shadow: 0px 1px 0px #FDFDFD;}
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {color: #fff; background:#60AB00 }
+.nav-tabs {border-bottom: 1px solid #60AB00;}
+.rightConBox{padding-right: 20px;}
+.nav > li > a:hover, .nav > li > a:focus {background-color: #BEDABB;}
+.nav-tabs > li > a:hover, .nav-tabs > li > a:focus {border-color: #EEE #EEE #60AB00;}
+.addnew-btn{margin: 20px 20px 0 0;}
+.must{color: #FF5C00; margin: 0 6px;}
+.showPageInfo
+
 /*reg & login*/
 #regPage, #loginPage{ background:url('<%= image_path "main_bg2.png" %>') repeat;}
 #regPage .header{ width:100%; height:75px; background:#77c90d;}
@@ -33,6 +43,7 @@ hr{border-bottom: 1px solid #CECECE;-moz-box-shadow: 0px 1px 0px #fdfdfd;-webkit
 #regPage .content{padding-top:80px;}
 #regPage font{color:#5ea600}
 #regPage .content{ padding-bottom:80px;}
+#regPage .content .container{ padding-left: 110px}
 #regPage .alert{margin:0 300px 30px 100px;}
 #regPage .vb, #regPage .vb a font{ margin-left:8px; vertical-align:bottom;}
 #loginPage .content{background:url('<%= image_path "loginBg.png" %>') no-repeat center 80px; height:880px}
@@ -41,6 +52,7 @@ hr{border-bottom: 1px solid #CECECE;-moz-box-shadow: 0px 1px 0px #fdfdfd;-webkit
 #loginPage .btn-kuma{width:284px; margin:18px 0;}
 #loginPage a,#regPage a{ color:#333;}
 #loginPage #footer a,#regPage #footer a{ font-size:16px; margin:0 8px; color:#777}
+#loginModal {width: 400px;font-size: 14px;margin-left: -200px;}
 
 /*index*/
 #logo{display:block; padding:14px 0 0 30px; float:left}
@@ -48,7 +60,7 @@ hr{border-bottom: 1px solid #CECECE;-moz-box-shadow: 0px 1px 0px #fdfdfd;-webkit
 #searchBox{float:right; margin:30px 30px 0 0;}
 #mainContent{width:100%; height:100%}
 #rightBox{float:left; padding-bottom:40px; }
-.pTitle{font-size:18px; color:#67b700; border-left:3px solid #67b700; font-weight:normal; text-shadow: 0 2px 0 rgba(255, 255, 255, 0.9); padding-left:10px; margin:30px 0 15px 45px;}
+.pTitle{font-size:18px; color:#67b700; border-left:3px solid #67b700; font-weight:normal; text-shadow: 0 2px 0 rgba(255, 255, 255, 0.9); padding-left:10px; margin:30px 0 21px 34px;}
 
 /*left*/
 #leftNav{ width:200px; background:#2d2d2d; float:left; height:100%; min-height:100%}
@@ -109,3 +121,9 @@ hr{border-bottom: 1px solid #CECECE;-moz-box-shadow: 0px 1px 0px #fdfdfd;-webkit
 .countTable th.info{background:#77c90d; color:#333;}
 .countTable tr{background:#fff; border:1px solid #aaa;}
 .countTable td{padding:5px 18px 5px 8px; line-height:30px;}
+.showPageInfo{margin: 5px 34px;}
+
+/* admin */
+.adminTabs{margin:5px 0 28px 34px;}
+.adminForm .controls{line-height: 38px;}
+#user_avatar{ margin-top: 8px;}

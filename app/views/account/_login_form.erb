@@ -1,0 +1,18 @@
+<h4 class="pTitle">请登录先</h4>
+<% form_for @account , "/login", method: :put ,remote: true, class: "form-horizontal" do |form|%>
+<%= form.error_messages %>
+<fieldset>
+  <div class="control-group">
+    <label class="control-label" for="">邮箱</label>
+    <div class="controls">
+      <%= form.text_field "email" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="">密码</label>
+    <div class="controls">
+      <%= form.password_field "password" %>
+    </div>
+  </div>
+</fieldset>
+<% end %>

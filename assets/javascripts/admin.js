@@ -60,3 +60,9 @@ function del_sku(sku_id){
 								    name="product[product_skus_attributes]['+sku_id+'][_destroy]" \
 									type="hidden" value="1"></input>');
 }
+
+function reserve(prod_id){
+	$.get('/reserve/'+prod_id+'/check',function(res_cmd){
+		res_cmd
+	})
+}

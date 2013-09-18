@@ -2,3 +2,4 @@ User-agent: *
 Disallow: /assets/
 Disallow: /session/
 Disallow: /account/
+Disallow: /admin/

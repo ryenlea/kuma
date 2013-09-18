@@ -13,26 +13,24 @@ module Kuma
     enable :sessions
 
     configure do
-        set :sprockets, SPROCKETS
+      set :sprockets, SPROCKETS
 
-        Sprockets::Helpers.configure do |config|
-            manifest_path      = Padrino.root('public/assets/manifest.json')
-            config.environment = sprockets
-            config.prefix      = '/assets'
-            config.manifest    = Sprockets::Manifest.new(sprockets, manifest_path)
-            config.digest      = true
-            config.public_path = public_folder
+      Sprockets::Helpers.configure do |config|
+        manifest_path      = Padrino.root('public/assets/manifest.json')
+        config.environment = sprockets
+        config.prefix      = '/assets'
+        config.manifest    = Sprockets::Manifest.new(sprockets, manifest_path)
+        config.digest      = true
+        config.public_path = public_folder
 
-            config.debug       = PADRINO_ENV == "production" ? false : true
-        end
-
-        
+        config.debug       = PADRINO_ENV == "production" ? false : true
+      end
     end
 
     before /admin*/ do
-        unless user_login?
-            redirect "/login"
-        end
+      unless user_login?
+        redirect "/login"
+      end
     end
 
     configure :production do

@@ -28,7 +28,9 @@
         <%= link_to "退出", '/logout', method: :delete , confirm: '你确定退出么？' %> 
       </div>
     </div>
+	<%if @current_user.saler? %>
     <a href="/admin/products/new" id="addProBtn">添加商品</a>
+	<% end %>
     <ul id="menuList">
 	<%if @current_user.admin? %>
 	  <li><a id= "users_sidebar" href="/admin/users">用户管理</a></li>

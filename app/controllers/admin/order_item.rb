@@ -4,7 +4,6 @@ Kuma::App.controllers :order_items do
   
 	before do
     redirect "/login" unless user_login?
-    login_redirect unless user_saler?
     $active_module = 'order_items'
 	end
   

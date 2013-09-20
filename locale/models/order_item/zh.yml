@@ -1,0 +1,13 @@
+zh:
+  models:
+    order_item:
+      name: "帐户"
+      attributes:
+        id: Id
+        product_id: "所属商品"
+        product_sku_id: "所属商品SKU"
+        number: "预定数量"
+        buyer_id: "用户Id"
+        buyer_name: "用户邮箱"
+        created_at: "创建时间"
+        updated_at: "更新时间"

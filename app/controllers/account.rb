@@ -32,17 +32,23 @@ Kuma::App.controllers :account, map: '' do
     if login_user = User.authenticate(@user.email, @user.password)
       session[:user_id] = login_user.id
       response.set_cookie('user', {:value => login_user.encrypt_cookie_value, :path => "/", :expires => 2.weeks.since, :httponly => true}) if params[:remember_me]
-  	  flash[:notice] = "Welcome #{@user.nickname}"
+  	  flash[:notice] = "欢迎你, #{@user.nickname}"
       login_redirect
     else
+      flash[:notice] = "用户名或密码出错"
       render 'account/login', layout: false
     end
   end
 
   delete :logout do
     session["user_id"] = nil;
-    flash[:notice] = 'logout succ!'
-    redirect '/'
+    current_user = nil;
+    flash[:notice] = '退出成功'
+    if request.referrer.include? '/buy'
+      redirect request.referrer
+    else
+      redirect '/'
+    end
   end
 
 end

@@ -1,0 +1,25 @@
+<% if user_login? %>
+<table class="countTable">
+   <thead>
+<tr>
+	<th class="info" colspan="4">个人预定记录</th>
+</tr>
+ <tr>
+   <th>颜色</th>
+   <th>尺寸</th>
+   <th>预订数量</th>
+   <th>预定时间</th>
+ </tr>
+   </thead>
+   <tbody>
+	   <% @his_items.each do |item|%>
+   <tr>
+     <td><%= h! item.product_color %></td>
+	 <td><%= h! item.product_size %></td>
+	 <td><%= item.number %></td>
+	 <td><%= date_formatter item.created_at %></td>
+   </tr>
+   <% end %>
+  </tbody>
+</table>
+<% end %>

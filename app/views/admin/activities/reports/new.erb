@@ -1,0 +1,50 @@
+<h4 class="pTitle">新建预定记录</h4>
+<% form_for @order_item , "/admin/activities/#{@activity.id}/report_flow", class: "form-horizontal" do |form|%>
+<%if form.error_messages.present? %>
+<div class="alert alert-error"> <%= form.error_messages %> </div>
+<% end %>
+
+<fieldset>
+	<div class="control-group">
+      <label class="control-label" for=""><font class="must">*</font>用户信息</label>
+      <div class="controls">
+		<%= form.select :buyer_id, collection:@users, fields: [:email,:id],class:"chosen-select" %>
+      </div>
+    </div>
+
+	<div class="control-group">
+      <label class="control-label" for=""><font class="must">*</font>商品</label>
+      <div class="controls">
+        <%= form.select :product_id, collection:@products, fields: [:name,:id],class:"chosen-select" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for=""><font class="must">*</font>sku</label>
+      <div id="admin_order_item_product_sku_div_id" class="controls">
+        
+      </div>
+    </div>
+	
+    <div class="control-group">
+      <label class="control-label" for=""><font class="must">*</font>预定数量</label>
+      <div class="controls">
+        <%= form.text_field :number ,class: "input-xlarge"%>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn btn-kuma btn-large" type="submit">提交</button>
+      </div>
+    </div>
+</table>
+</fieldset>
+<% end %>
+<script type="text/template" id="skus_select_tag_template">
+<select id="order_item_product_sku_id" name="order_item[product_sku_id]">
+{{ for(var i=0; i< skus.length; i++ ){ }}
+<option value="{{= skus[i].id}}">颜色：{{= skus[i].color}}, 尺寸：{{= skus[i].size}}, 库存：{{= skus[i].number - skus[i].selled_number}}</option>
+{{  } }}
+</select>
+</script>

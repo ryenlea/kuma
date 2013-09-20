@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class Product < ActiveRecord::Base
 	has_many :product_skus, dependent: :destroy, inverse_of: :product
+  has_many :order_items
 	belongs_to :activity, counter_cache: true
 	belongs_to :user
 
@@ -13,4 +14,11 @@ class Product < ActiveRecord::Base
 
   mount_uploader :photo, PhotoUploader
 
+  def self.search params
+    if params[:activity_id]
+      where("activity_id = ?", params[:activity_id]).page(params[:page])
+    else
+      page(params[:page])
+    end
+  end
 end

@@ -1,0 +1,13 @@
+zh:
+  models:
+    product_sku:
+      name: "商品SKU"
+      attributes:
+        id: Id
+        product_id: "所属商品"
+        color: "颜色"
+        size: "尺寸"
+        number: "数量"
+        selled_number: "卖出数量"
+        created_at: "创建时间"
+        updated_at: "更新时间"

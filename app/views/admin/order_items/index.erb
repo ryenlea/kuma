@@ -1,0 +1,26 @@
+
+<h4 class="pTitle fl">我的预定记录</h4>
+
+<table class="table table-activity">
+	<thead>
+        <tr>
+          <th>商品名称</th>
+		  <th>颜色</th>
+		  <th>尺寸</th>
+          <th>数量</th>
+          <th>预定时间</th>
+        </tr>
+    </thead>
+    <tbody>
+		<% @order_items.each do |item| %>
+		<tr>
+		<td><%= item.product_name %></td>
+		<td><%= item.product_color%></td>
+		<td><%= item.product_size %></td>
+		<td><%= item.number %></td>
+		<td><%= date_formatter item.created_at %></td>
+		</tr>
+		<% end %>
+	</tbody>
+	
+</table>

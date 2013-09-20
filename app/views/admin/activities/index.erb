@@ -1,6 +1,6 @@
 
 <h4 class="pTitle fl">我的活动</h4>
-<%= link_to 'add activity' ,'/admin/activities/new',class: "btn btn-kuma btn-kumaSmall fr addnew-btn" %>
+<%= link_to '新建活动' ,'/admin/activities/new',class: "btn btn-kuma btn-kumaSmall fr addnew-btn" %>
 
 <table class="table table-activity">
 	<thead>
@@ -15,12 +15,13 @@
 	<% @activities.each do |activity| %>
 	<tr>
       <td><%= link_to activity.name, "/admin/activities/#{activity.id}/edit" %></td>
-      <td><%= activity.products_count %></td>
-      <td><%= activity.status %></td>
+      <td><%= link_to "#{activity.products_count}", "/admin/products?activity_id=#{activity.id}" %></td>
+      <td><%= activity.status_desc %></td>
       <td>
-		<%= link_to '', "/buy/#{activity.token}" , target: '_blank',class: 'btn-show', title:'查看'%>
-		<%= link_to '', "/admin/activities/#{activity.id}/edit", class: 'btn-edit',title:"编辑" %>
-		<%= link_to '', "/admin/activities/#{activity.id}", method: :delete, confirm: 'are u wanna del this activity?', class: 'btn-del', title: "删除" %>
+		<%= link_to '查看购买记录', "/admin/activities/#{activity.id}/report_flow"%>
+		<%= link_to '分享链接', "/buy/#{activity.token}" , target: '_blank', title:'查看'%>
+		<%= link_to '编辑', "/admin/activities/#{activity.id}/edit" %>
+		<%= link_to '删除', "/admin/activities/#{activity.id}", method: :delete, confirm: '你确定删除该活动么？' %>
 	  </td>
     </tr>
 	<% end %>

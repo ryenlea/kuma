@@ -1,12 +1,13 @@
 <h4 class="pTitle fl">我的商品</h4>
-<a class="btn btn-kumaSmall fr  addnew-btn" href="/admin/products/new">add product</a>
+<a class="btn btn-kumaSmall fr  addnew-btn" href="/admin/products/new">新建商品</a>
 
 <table class="table table-activity">
 	<thead>
         <tr>
-          <th>product名称</th>
-          <th>income price</th>
-          <th>sale_price</th>
+          <th>商品名称</th>
+		  <th>所属活动</th>
+          <th>进货价</th>
+          <th>出货价</th>
           <th>操作</th>
         </tr>
     </thead>
@@ -14,11 +15,12 @@
 	<% @products.each do |product| %>
 	<tr>
       <td><%= link_to product.name, "/admin/products/#{product.id}/edit" %></td>
+	  <td><%= link_to product.activity.name , "/admin/activities/#{product.activity.id}/edit"%></td>
 	  <td><%= product.purchase_price %></td>
 	  <td><%= product.sell_price %></td>
       <td>
 		<%= link_to '', "/admin/products/#{product.id}/edit", class: 'btn-edit',title:"编辑" %>
-		<%= link_to '', "/admin/products/#{product.id}", method: :delete, confirm: 'are u wanna del this product?', class: 'btn-del', title: "删除" %>
+		<%= link_to '', "/admin/products/#{product.id}", method: :delete, confirm: '你确认删除该商品？', class: 'btn-del', title: "删除" %>
 	  </td>
     </tr>
 	<% end %>

@@ -11,8 +11,8 @@
 <div class="content">
   <div class="container">
     <% form_for @user, '/login', method: :post, class: "form-signin" do |form|%>
-    <%if form.error_messages.present? %>
-    <div class="alert alert-error"> <%= form.error_messages %> </div>
+    <%if flash[:notice].present? %>
+    <div class="alert alert-error"> <%= flash[:notice] %> </div>
     <% end %>
       <fieldset>
         <div class="control-group">

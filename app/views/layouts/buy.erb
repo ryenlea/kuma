@@ -8,7 +8,8 @@
 </head>
 
 <body>
-<div id="topBar" class="clearfix"> <a id="logo" href="/"><img src="<%= image_path('main_logo.png') %>" alt="logo" /></a>
+<%= partial 'account/login_header'%>
+<div id="topBar" class="clearfix"> <a id="logo" href="/buy/<%= @activity.token %>"><img src="<%= image_path('main_logo.png') %>" alt="logo" /></a>
 </div>
 <div id="mainContent" class="clearfix"> 
   <!-- 右侧栏 -->
@@ -18,6 +19,6 @@
   <!-- 右侧栏结束 --> 
 </div>
 </div>
-<%== javascript_tag 'admin',charset: "UTF-8" %>
+<%== javascript_tag 'admin' %>
 </body>
 </html>

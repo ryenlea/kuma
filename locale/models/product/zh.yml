@@ -1,0 +1,16 @@
+zh:
+  models:
+    product:
+      name: "商品"
+      attributes:
+        id: Id
+        name: "商品名称"
+        user_id: "所属用户"
+        photo: "商品图片"
+        purchase_price: "进货价"
+        sell_price: "出货价"
+        taobao_link: "淘宝链接"
+        product_link: "其他链接"
+        activity_id: "所属活动"
+        created_at: "创建时间"
+        updated_at: "更新时间"

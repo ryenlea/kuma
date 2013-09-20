@@ -1,0 +1,13 @@
+zh:
+  models:
+    user:
+      name: "帐户"
+      attributes:
+        id: Id
+        nickname: "用户名"
+        email: "邮箱"
+        password: "密码"
+        password_confirmation: "确认密码"
+        terms_of_service: "服务条款"
+        created_at: "创建时间"
+        updated_at: "更新时间"

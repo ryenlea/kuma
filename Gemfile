@@ -4,14 +4,13 @@ gem 'thin'
 #
 #gem 'chinese_pinyin'
 # Optional JSON codec (faster performance)
-gem 'oj'
+#gem 'oj'
 
 # Project requirements
 gem 'rake'
 
 # view template
 gem 'erubis', '~> 2.7.0'
-gem 'slim'
 
 #db
 gem 'activerecord', '~> 3.2', :require => 'active_record'

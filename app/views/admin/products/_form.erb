@@ -1,3 +1,7 @@
+<%if form.error_messages.present? %>
+<div class="alert alert-error"> <%= form.error_messages %> </div>
+<% end %>
+
 <fieldset>
 	<div class="control-group">
       <label class="control-label" for=""><font class="must">*</font>所属活动</label>

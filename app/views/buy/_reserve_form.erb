@@ -1,0 +1,36 @@
+<div id="reserveModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">商品预定</h3>
+  </div>
+  <% form_for @order_item,'', id: 'do_reserve_form',class: 'form-signin',  remote: true ,disable_with: '提交中...' do |f|%>
+  <div id="do_reserve_div" class="modal-body">
+	   <fieldset>
+          <div class="control-group">
+             <label class="control-label" for="input01">规格</label>
+             <div class="controls">
+               <%= f.select :product_sku_id, collection:@product.product_skus, fields: [:desc,:id] %>
+             </div>
+             <label class="control-label" for="input02">预定数量</label>
+             <div class="controls">
+			   <%= f.text_field :number, class: 'input-xlarge' %>
+             </div>
+          </div>
+       </fieldset>
+  </div>
+  <div class="modal-footer"> 
+    <input type="submit" class="btn btn-success" value="确认预定"></input>
+  </div>
+  <% end %>
+</div>
+<script type="text/template" id="reserve_errors_template">
+<div id="reserve_errors_id" class="alert alert-error"> 
+  <div id="field-errors" class="field-errors">
+	  <ul>
+	  {{ _.each(errors, function(e){ }}
+		  <li>{{=e[0] }}</li>
+	  {{ }); }}
+	  </ul>
+  </div>
+</div>
+</script>

@@ -57,7 +57,7 @@ module Kuma
     end
       
     error 404 do
-        render 'error/404', :layout => 'application'
+        render 'error/404'
     end
 
     error 500 do

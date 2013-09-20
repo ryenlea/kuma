@@ -5,10 +5,11 @@ Kuma::App.controllers :products, map: '/admin/products' do
     before do
       redirect "/login" unless user_login?
       login_redirect unless user_saler?
+      $active_module = 'products'
     end
 
     get :index do
-      @products = current_user.products.page(params[:page])
+      @products = current_user.products.search(params).order('created_at desc')
       render 'admin/products/index'
     end
 
@@ -50,5 +51,13 @@ Kuma::App.controllers :products, map: '/admin/products' do
     delete ':product_id' do
       current_user.products.find(params[:product_id]).destroy
       redirect "/admin/products"
+    end
+    
+    #skus
+    get ':product_id/skus' do
+      content_type :js
+      @product = current_user.products.find(params[:product_id])
+      @product_skus = @product.product_skus
+      @product_skus.to_json
     end
 end

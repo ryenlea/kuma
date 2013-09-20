@@ -93,7 +93,6 @@ GEM
     multi_json (1.7.9)
     multipart-post (1.2.0)
     mysql2 (0.3.13)
-    oj (2.1.4)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -118,9 +117,6 @@ GEM
       tilt (~> 1.3, >= 1.3.4)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    slim (2.0.1)
-      temple (~> 0.6.6)
-      tilt (>= 1.3.3, < 2.1)
     slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -130,7 +126,6 @@ GEM
     sprockets-helpers (1.0.1)
       sprockets (~> 2.0)
     subexec (0.2.3)
-    temple (0.6.6)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -163,7 +158,6 @@ DEPENDENCIES
   mini_magick
   minitest (~> 2.6.0)
   mysql2
-  oj
   padrino!
   pry-padrino
   rack-test
@@ -172,7 +166,6 @@ DEPENDENCIES
   second_level_cache!
   sentry-raven
   sinatra-flash
-  slim
   sprockets
   sprockets-helpers
   thin

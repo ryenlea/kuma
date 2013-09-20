@@ -17,9 +17,9 @@ Kuma::App.controllers :profile, map: '/admin/profile' do
     @user.attributes = params[:user]
 
     if @user.save(validate: false)
-      flash[:notice] = "ok"
+      flash[:notice] = "成功"
     else
-      flash[:notice] = 'error'
+      flash[:notice] = '失败'
     end
     redirect "/admin/profile"
   end
@@ -36,9 +36,9 @@ Kuma::App.controllers :profile, map: '/admin/profile' do
       current_password: params[:current_password]
     }
     if @user.update_password
-      flash[:notice] = 'ok'
+      flash[:notice] = '成功'
     else
-      flash[:error] = 'update password err'
+      flash[:notice] = '失败'
     end
     redirect '/admin/profile/update_password'
   end

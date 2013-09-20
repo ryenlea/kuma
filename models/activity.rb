@@ -1,6 +1,7 @@
 # encoding: UTF-8
 require 'digest'
 
+ACTIVITY_STATUS = ["未开始" , "进行中",  "已结束"]
 class Activity < ActiveRecord::Base
   has_many :products
   belongs_to :user
@@ -15,13 +16,17 @@ class Activity < ActiveRecord::Base
     find(params[:activity_id])
   end
 
+  def status_desc
+  	ACTIVITY_STATUS[status]
+  end
+  
   def status
   	if(started_at > Time.now)
-      "未开始"
+      0
     elsif(ended_at > Time.now && started_at < Time.now)
-      "进行中"
+      1
     elsif(ended_at < Time.now)
-      "已过期"
+      2
     end
   end
   

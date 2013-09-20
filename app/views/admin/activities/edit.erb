@@ -1,5 +1,5 @@
-<h4 class="pTitle">update activities</h4>
+<h4 class="pTitle">修改活动</h4>
 <% form_for @activity , "/admin/activities/#{@activity.id}", method: :put , class: "form-horizontal" do |form|%>
-<%= form.error_messages %>
+
 <%= partial 'admin/activities/form', :object => form %>
 <% end %>

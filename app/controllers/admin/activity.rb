@@ -5,6 +5,7 @@ Kuma::App.controllers :activities, map: '/admin/activities' do
 	before do
     redirect "/login" unless user_login?
     login_redirect unless user_saler?
+    $active_module = 'activities'
 	end
     
   get :index do
@@ -13,10 +14,46 @@ Kuma::App.controllers :activities, map: '/admin/activities' do
     render "admin/activities/index"
   end
 
+  get :show_report_flow, map: ':activity_id/report_flow' do
+    @activity = current_user.activities.find(params[:activity_id])
+    @order_items = OrderItem.find_activity_report_flow params
+    
+    render "admin/activities/report_flow"
+  end
+  
+  get :show_report, map: ':activity_id/report' do
+    @activity = current_user.activities.find(params[:activity_id])
+    @order_items = OrderItem.find_activity_report params
+    
+    render "admin/activities/report"
+  end
+  
+  get :add_report_flow, map: ':activity_id/report_flow/new' do
+    @users = User.all
+    @activity = current_user.activities.find(params[:activity_id])
+    @products = @activity.products
+    @order_item = OrderItem.new
+    render "admin/activities/reports/new"
+  end
+  
+  post :do_add_report_flow, map: ':activity_id/report_flow' do
+    @order_item = OrderItem.new(params[:order_item])
+    @order_item.buyer_name = User.find(@order_item.buyer_id).email
+    if @order_item.do_reserve
+      redirect "/admin/activities/#{params[:activity_id]}/report_flow"
+    else
+      @users = User.all
+      @activity = current_user.activities.find(params[:activity_id])
+      @products = @activity.products
+      render "admin/activities/reports/new"
+    end
+  end
+  
   get :new do
     @activity = Activity.new
     render "admin/activities/new"
   end
+  
 
   post :create , map: '' do
     @activity = current_user.activities.build(params[:activity])

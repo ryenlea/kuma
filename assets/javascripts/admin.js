@@ -1,6 +1,6 @@
-//= require jquery
+//= require json2
+//= require jquery-1.9.0
 //= require jquery-ujs
-//= require jquery-ui
 //= require bootstrap
 //= require underscore
 //= require chosen.jquery
@@ -30,7 +30,7 @@ $(document).ready(function(e) {
 	$(window).resize(function() {
 		docWidth = $(document).width();
 		$('#rightBox').width(docWidth-leftNavWidth);
-		console.log('resize');
+		//console.log('resize');
 	});
 
 	$('#rightBox').resize(function() {
@@ -45,6 +45,9 @@ $(document).ready(function(e) {
 			$('#leftNav').height(rightBoxHeight + 40);
 		};
 	};
+	//
+	$('#menuList li').attr('class','');
+	$("#"+$('#sidebar_active_flag').val() +"_sidebar").attr('class','active');
 });
 
 function add_sku(){
@@ -61,8 +64,60 @@ function del_sku(sku_id){
 									type="hidden" value="1"></input>');
 }
 
-function reserve(prod_id){
-	$.get('/reserve/'+prod_id+'/check',function(res_cmd){
-		res_cmd
+function reserve(act_token,prod_id){
+	$.get('/buy/'+act_token+'/'+prod_id+'/check',function(res_cmd){
+		//not login
+		if(res_cmd == '1'){
+			window.location="/login"
+		}else{
+			$('#reserveModal').modal()
+		}
 	})
 }
+$(document).ready(function(e){
+	$('#do_reserve_form')
+		.bind("ajax:complete", function(jxhr,res){
+			data = JSON.parse(res.responseText)
+			if(data.result == 'ok'){
+				alert('预定成功');
+				window.location.reload();
+			}else if(data.errors){
+				$('#reserve_errors_id').remove();
+				var seg_template = _.template($('#reserve_errors_template').text());
+				var seg = seg_template({errors: data.errors});
+				$('#do_reserve_div').before(seg);
+			}else{
+				alert('网络出错');
+			}
+		}).bind('ajax:before',function(){
+			var reserve_number =$('#order_item_number').val();
+			if(_.isNaN(Number(reserve_number)) || Number(reserve_number) <= 0){
+				alert('请输入大于0整数');
+				return false;
+			}
+			return true;
+		});
+		
+	//backend admin
+	function fill_skus_value(){
+		var product_id = $('#order_item_product_id').val();
+		if(product_id){
+			$.get("/admin/products/"+product_id+"/skus", function(result){
+				var skus = result;
+				var seg_template = _.template($('#skus_select_tag_template').text());
+				var seg = seg_template({skus: skus});
+				//console.log(skus)
+				$('#admin_order_item_product_sku_div_id').html(seg);
+			},'json');
+		} 
+	}
+	fill_skus_value();
+	$('#order_item_product_id').chosen().change(
+		function(){
+			fill_skus_value();
+		}
+	);
+	//
+	
+	//
+});

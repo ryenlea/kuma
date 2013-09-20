@@ -1,0 +1,8 @@
+<div class="clearfix siteNav">
+	<% if current_user %>
+		<%= link_to '退出' ,'/logout', method: :delete,class: 'fr', confirm: '你确认要退出么？'%>
+		<span class="fr">尊敬的会员&nbsp;<font><%= current_user.nickname%> (<%=current_user.email %>)</font>&nbsp;您好！&nbsp;&nbsp;</span> 
+	<% else %>
+		<a href="/sigin_up" target="_blank" class="fl">现在就免费开通酷妈团长</a><a class="fr" href="/login">登录»</a><span class="fr">已开通服务的客户请&nbsp;&nbsp;</span> 
+	<% end %>
+</div>

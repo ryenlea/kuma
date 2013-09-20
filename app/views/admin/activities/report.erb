@@ -1,0 +1,36 @@
+<div class="rightConBox">
+<h4 class="sTitle">活动 <%= @activity.name %> 预定记录</h4>
+
+<form>
+	<fieldset>
+<ul class="nav nav-tabs ">
+  <li ><a href="/admin/activities/<%= @activity.id%>/report_flow">预定流水记录</a></li>
+  <li class="active"><a href="javascript:void(0)">预定报表</a></li>
+</ul>
+<table class="table table-activity">
+	<thead>
+        <tr>
+          <th>用户id</th>
+          <th>用户名</th>
+          <th>预定商品</th>
+          <th>预定商品颜色</th>
+		  <th>预定商品尺寸</th>
+		  <th>预定数量</th>
+        </tr>
+    </thead>
+    <tbody>
+	<% @order_items.each do |item| %>
+	<tr>
+		<td><%= item.buyer_id %></td>
+		<td><%= item.buyer_name %></td>
+		<td><%= item.product_name %></td>
+		<td><%= item.color %></td>
+		<td><%= item.size %></td>
+		<td><%= item.number %></td>
+    </tr>
+	<% end %>
+	</tbody>
+</table>
+</fieldset>
+</form>
+</div>

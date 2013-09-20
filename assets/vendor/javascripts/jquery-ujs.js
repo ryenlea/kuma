@@ -63,8 +63,10 @@ $(function(){
       // JSAdapter.sendRequest(element, { verb: 'put', url : '...', params: {} });
       sendRequest: function(element, options) {
         var verb = options.verb, url = options.url, params = options.params, dataType = options.dataType;
-        var event = element.trigger('ajax:before');
-        if (event.stopped) return false;
+        var event = $.Event("ajax:before");
+		element.trigger(event);
+		var event_stop = event.result === false;
+        if (event.stopped || event_stop) return false;
         $.ajax({
           url: url,
           type: verb.toUpperCase() || 'POST',

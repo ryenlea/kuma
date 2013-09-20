@@ -9,9 +9,11 @@
 
 <body>
 <div id="topBar" class="clearfix"> <a id="logo" href="/"><img src="<%= image_path('main_logo.png') %>" alt="logo" /></a>
+	<!--
   <form id="searchBox" class="navbar-search pull-left">
     <input type="text" class="search-query" placeholder="Search">
   </form>
+		-->
 </div>
 <div id="mainContent" class="clearfix"> 
   <!-- 左侧栏 -->
@@ -23,18 +25,19 @@
       <div class="info">
         <h4><%= @current_user.nickname %></h4>
         <a href="/admin/profile" class="setting">设置</a>
-        <%= link_to "退出", '/logout', method: :delete , confirm: 'u wanna logout?' %> 
+        <%= link_to "退出", '/logout', method: :delete , confirm: '你确定退出么？' %> 
       </div>
     </div>
     <a href="/admin/products/new" id="addProBtn">添加商品</a>
     <ul id="menuList">
-    <%if @current_user.saler? %>
-      <li><a href="/admin/activities" class="active">我的活动</a></li>
-      <li><a href="/admin/products">我的商品</a></li>
-    <%elsif @current_user.admin? %>
-      <li><a href="/admin/users" class="active">users</a></li>
-    <%else %>
-    <%end%>
+	<%if @current_user.admin? %>
+	  <li><a id= "users_sidebar" href="/admin/users">用户管理</a></li>
+	<%end%>
+	<%if @current_user.saler? %>
+      <li><a id= "activities_sidebar" href="/admin/activities">我的活动</a></li>
+      <li><a id="products_sidebar" href="/admin/products">我的商品</a></li>
+	<% end %>
+	<li><a id="order_items_sidebar" href="/admin/his_items">预定记录</a></li>
     </ul>
   </div>
   <!-- 左侧栏结束 --> 
@@ -43,6 +46,7 @@
   	<%= yield %>
   </div>
   <!-- 右侧栏结束 --> 
+  <input type="hidden" id="sidebar_active_flag" value="<%= $active_module %>"></input>
 </div>
 </div>
 

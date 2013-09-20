@@ -7,7 +7,7 @@ require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default, PADRINO_ENV)
 
-I18n.default_locale = 'zh_cn'
+I18n.default_locale = :zh
 
 Dir.glob("#{PADRINO_ROOT}/locale/**/*.yml").each do |file|
   I18n.load_path << file
@@ -49,7 +49,7 @@ end
 
 APP_CONFIG = YAML.load_file("#{PADRINO_ROOT}/config/app_config.yml")[PADRINO_ENV]
 
-WillPaginate.per_page = 20
+WillPaginate.per_page = 80
 
 MiniMagick.processor = :gm
 

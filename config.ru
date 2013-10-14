@@ -6,6 +6,7 @@
 
 require File.expand_path("../config/boot.rb", __FILE__)
 
+
 if PADRINO_ENV  == 'development'
     map '/assets' do
         run Kuma::App.sprockets

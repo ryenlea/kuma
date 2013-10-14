@@ -7,6 +7,7 @@
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker.zh-CN
 //= require jquery.ba-resize
+//= require_self
 _.templateSettings = {
     interpolate: /\{\{\=(.+?)\}\}/g,
     evaluate: /\{\{(.+?)\}\}/g
